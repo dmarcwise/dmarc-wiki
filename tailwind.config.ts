@@ -12,6 +12,10 @@ export default {
 					lg: '900px',
 					xl: '900px',
 					'2xl': '900px'
+				},
+				padding: {
+					DEFAULT: '24px',
+					md: '32px'
 				}
 			},
 			fontFamily: {
