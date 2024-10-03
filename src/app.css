@@ -1,3 +1,17 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@layer base {
+  h1 {
+    @apply tracking-wide font-title font-bold;
+  }
+
+  h2 {
+    @apply font-title font-semibold text-4xl;
+  }
+
+  hr {
+    @apply border-t-slate-200;
+  }
+}
