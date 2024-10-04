@@ -4,14 +4,14 @@
 
 @layer base {
   h1 {
-    @apply tracking-wide font-title font-bold;
+    @apply tracking-wide font-title font-medium text-6xl;
   }
 
   h2 {
-    @apply font-title font-semibold text-4xl;
+    @apply font-title font-semibold;
   }
 
   hr {
-    @apply border-t-slate-200;
+    @apply border-t-slate-200 dark:border-slate-800;
   }
 }

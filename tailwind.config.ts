@@ -1,5 +1,6 @@
 import type { Config } from 'tailwindcss';
 import defaultTheme from 'tailwindcss/defaultTheme';
+import typography from '@tailwindcss/typography';
 
 export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
@@ -21,9 +22,14 @@ export default {
 			fontFamily: {
 				title: ['Zilla Slab', ...defaultTheme.fontFamily.serif],
 				sans: ['Inter Variable', ...defaultTheme.fontFamily.sans]
+			},
+			colors: {
+				slate: {
+					'850': '#172033'
+				}
 			}
 		}
 	},
 
-	plugins: []
+	plugins: [typography]
 } as Config;
