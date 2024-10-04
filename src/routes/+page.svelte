@@ -84,11 +84,12 @@
 
 <main class="container">
 	<p class="mt-12 text-lg">
-		Welcome to DMARC.wiki, a directory of email service providers and their DMARC compliance level.
+		Welcome to DMARC.wiki, a directory of email service providers and their DMARC compliance level
+		when used with custom domains.
 	</p>
 
 	<p class="mt-4 text-lg">
-		For each provider you'll find their support for SPF, SPF alignment, DKIM and DKIM alignment,
+		For each provider you'll find their support for SPF alignment, DKIM and DKIM alignment,
 		with instructions and tips on how to configure them.
 	</p>
 
