@@ -5,6 +5,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
+		"postbuild": "npx svelte-sitemap --domain https://dmarc.wiki",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -37,6 +38,7 @@
 	"dependencies": {
 		"@fontsource-variable/inter": "^5.1.0",
 		"@fontsource/zilla-slab": "^5.1.0",
-		"lucide-svelte": "^0.447.0"
+		"lucide-svelte": "^0.447.0",
+		"svelte-sitemap": "^2.6.0"
 	}
 }
