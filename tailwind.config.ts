@@ -5,6 +5,8 @@ import typography from '@tailwindcss/typography';
 export default {
 	content: ['./src/**/*.{html,js,svelte,ts}', './mdsvex.config.js'],
 
+	darkMode: 'selector',
+
 	theme: {
 		extend: {
 			container: {

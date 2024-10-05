@@ -6,6 +6,7 @@
 	import 'svooltip/styles.css';
 	import logo from '$lib/logo.png';
 	import { ModeWatcher } from 'mode-watcher';
+	import { userPrefersMode } from 'mode-watcher';
 </script>
 
 <svelte:head>
@@ -26,8 +27,15 @@
 
 <hr>
 
-<slot></slot>
+<slot />
 
-<footer class="container mt-10 py-5">
+<hr class="mt-16">
 
+<footer class="container py-12 flex">
+	<select class="p-2 rounded-md ml-auto"
+					bind:value={$userPrefersMode}>
+		<option value="system">Auto</option>
+		<option value="light">Light</option>
+		<option value="dark">Dark</option>
+	</select>
 </footer>

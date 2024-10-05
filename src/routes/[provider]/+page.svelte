@@ -18,7 +18,7 @@
 	<title>How to set up SPF, DKIM and DMARC for {provider.name}</title>
 </svelte:head>
 
-<main class="container py-16">
+<main class="container my-16">
 
 	<article>
 		<div class="flex flex-col sm:flex-row sm:items-center justify-center gap-x-6 gap-y-3">
