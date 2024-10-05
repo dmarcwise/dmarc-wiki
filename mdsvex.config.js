@@ -28,6 +28,7 @@ const mdsvexOptions = {
 				}
 			};
 		},
+		// Auto-import some components to avoid importing them manually in each file
 		[
 			remarkSvelteAutoImport,
 			{

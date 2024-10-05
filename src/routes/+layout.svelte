@@ -3,6 +3,7 @@
 	import '@fontsource/zilla-slab/700.css';
 	import '@fontsource-variable/inter';
 	import '../app.css';
+	import 'svooltip/styles.css';
 	import logo from '$lib/logo.png';
 	import { ModeWatcher } from 'mode-watcher';
 </script>

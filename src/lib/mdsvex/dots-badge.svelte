@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { tooltip } from 'svooltip';
-	import 'svooltip/styles.css';
 </script>
 
 <span class="bg-slate-700 cursor-pointer
@@ -18,15 +17,3 @@
 	<span class="size-1.5 rounded-full bg-slate-500 inline-block"></span>
 	<span class="size-1.5 rounded-full bg-slate-500 inline-block"></span>
 </span>
-
-<style>
-  :global(.svooltip) {
-    --svooltip-bg: #FFFFFF;
-    --svooltip-text: #000000;
-    --svooltip-padding: 10px 14px;
-    --svooltip-roundness: 8px;
-    --svooltip-weight: 500;
-    --svooltip-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    max-width: 200px;
-  }
-</style>

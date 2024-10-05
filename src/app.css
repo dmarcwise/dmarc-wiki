@@ -15,3 +15,15 @@
     @apply border-t-slate-200 dark:border-slate-800;
   }
 }
+
+@layer components {
+  .svooltip {
+    --svooltip-bg: #FFFFFF;
+    --svooltip-text: #000000;
+    --svooltip-padding: 10px 14px;
+    --svooltip-roundness: 8px;
+    --svooltip-weight: 500;
+    --svooltip-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    max-width: 250px;
+  }
+}
