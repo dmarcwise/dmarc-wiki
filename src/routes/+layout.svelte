@@ -32,6 +32,12 @@
 <hr class="mt-16">
 
 <footer class="container py-12 flex">
+	<p>
+		Made by <a href="https://dmarcwise.io" class="underline">DMARCwise</a>
+		•
+		<a href="https://github.com/dmarcwise/dmarc-wiki" class="underline">GitHub</a>
+	</p>
+
 	<select class="p-2 rounded-md ml-auto"
 					bind:value={$userPrefersMode}>
 		<option value="system">Auto</option>
