@@ -43,22 +43,16 @@ const mdsvexOptions = {
 		]
 	],
 	rehypePlugins: [
-		// Remove rel="nofollow" from links to dmarcwise.io
 		[
 			rehypeRewrite,
 			{
 				rewrite: (node) => {
+					// Remove rel="nofollow" from links to dmarcwise.io
 					if (node.tagName === 'a' && node.properties.href.startsWith('https://dmarcwise.io')) {
 						node.properties.rel = undefined;
 					}
-				}
-			}
-		],
-		// Replace textual example domain with stylized badge
-		[
-			rehypeRewrite,
-			{
-				rewrite: (node) => {
+
+					// Replace textual example domain with stylized badge
 					if (node.tagName === 'code') {
 						for (const child of node.children) {
 							if (child.type === 'text') {
