@@ -41,8 +41,9 @@
 
 		</aside>
 
-		<main class="prose prose-slate lg:prose-lg dark:prose-invert max-w-none prose-pre:whitespace-pre-wrap
-							prose-code:before:hidden prose-code:after:hidden prose-p:mt-0">
+		<main class="prose prose-slate lg:prose-lg dark:prose-invert prose-pre:whitespace-pre-wrap
+							prose-code:before:hidden prose-code:after:hidden prose-p:sm:mt-0
+						  max-w-none">
 			<svelte:component this={provider.component} />
 		</main>
 
