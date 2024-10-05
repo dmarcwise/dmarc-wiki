@@ -1,4 +1,6 @@
-const logos = import.meta.glob('$lib/logos/*.{png,jpg}', {
+import type { SvelteComponent } from 'svelte';
+
+const logos = import.meta.glob<ImageModule>('$lib/logos/*.{png,jpg}', {
 	eager: true,
 	query: {
 		enhanced: true
@@ -7,4 +9,8 @@ const logos = import.meta.glob('$lib/logos/*.{png,jpg}', {
 
 export function getLogo(fileName: string) {
 	return logos[`/src/lib/logos/${fileName}`].default;
+}
+
+interface ImageModule {
+	default: typeof SvelteComponent;
 }
