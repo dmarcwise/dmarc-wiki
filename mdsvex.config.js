@@ -29,6 +29,17 @@ const mdsvexOptions = {
 		}
 	},
 	rehypePlugins: [
+		// Remove rel="nofollow" from links to dmarcwise.io
+		[
+			rehypeRewrite,
+			{
+				rewrite: (node) => {
+					if (node.tagName === 'a' && node.properties.href.startsWith('https://dmarcwise.io')) {
+						node.properties.rel = undefined;
+					}
+				}
+			}
+		],
 		// Replace textual example domain with stylized badge
 		[
 			rehypeRewrite,
