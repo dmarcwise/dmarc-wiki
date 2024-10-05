@@ -13,9 +13,13 @@
 
 <ModeWatcher />
 
-<header class="container py-5">
+<header class="container py-5 flex justify-between items-center">
 	<a href="/">
 		<img src={logo} alt="DMARC.wiki" class="h-10 dark:rounded-md dark:border dark:border-slate-800" />
+	</a>
+
+	<a href="/" class="font-medium">
+		About
 	</a>
 </header>
 

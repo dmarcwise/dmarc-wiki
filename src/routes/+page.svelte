@@ -29,7 +29,7 @@
 	</div>
 
 	<h2 class="mt-12 text-4xl">
-		Email marketing, newsletters, APIs
+		Marketing, newsletters & transactional
 	</h2>
 
 	<div class="grid mt-8 gap-y-4">

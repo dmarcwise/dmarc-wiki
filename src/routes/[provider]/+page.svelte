@@ -13,7 +13,8 @@
 <main class="container py-16">
 
 	<div class="flex flex-col sm:flex-row sm:items-center justify-center gap-x-6 gap-y-3">
-		<div class="size-20 bg-white rounded-xl border border-slate-200 p-2 shrink-0">
+		<div
+			class="size-20 rounded-xl border border-slate-200 dark:border-slate-700 p-2 shrink-0">
 			<enhanced:img src={getLogo(provider.image)}
 										alt="{provider.name} logo"
 										class="w-full rounded-lg" />
