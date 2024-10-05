@@ -1,3 +1,5 @@
+import rehypeRewrite from 'rehype-rewrite';
+
 const dots = `
 <span class="bg-slate-700 px-2 py-1.5 mx-0.5 rounded-full
 						inline-flex items-center gap-x-1
@@ -6,6 +8,12 @@ const dots = `
 	<span class="bg-slate-500 inline-block size-1.5 rounded-full"></span>
 	<span class="bg-slate-500 inline-block size-1.5 rounded-full"></span>
 	<span class="bg-slate-500 inline-block size-1.5 rounded-full"></span>
+</span>
+`.trim();
+
+const exampleDomain = `
+<span class="border px-1.5 py-0.5 rounded-md">
+	example.com
 </span>
 `.trim();
 
@@ -19,7 +27,24 @@ const mdsvexOptions = {
 			text = text.replace('[...]', dots);
 			return `<pre>${text}</pre>`;
 		}
-	}
+	},
+	rehypePlugins: [
+		// Replace textual example domain with stylized badge
+		[
+			rehypeRewrite,
+			{
+				rewrite: (node) => {
+					if (node.tagName === 'code') {
+						for (const child of node.children) {
+							if (child.type === 'text') {
+								child.value = child.value.replace('[example.com]', exampleDomain);
+							}
+						}
+					}
+				}
+			}
+		]
+	]
 };
 
 export default mdsvexOptions;
