@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { badgeColor } from '$lib/utils.js';
-	import CrossEmoji from '$lib/emoji/CrossEmoji.svelte';
-	import CheckEmoji from '$lib/emoji/CheckEmoji.svelte';
-	import WarningEmoji from '$lib/emoji/WarningEmoji.svelte';
+	import CrossEmoji from '$lib/emojis/CrossEmoji.svelte';
+	import CheckEmoji from '$lib/emojis/CheckEmoji.svelte';
+	import WarningEmoji from '$lib/emojis/WarningEmoji.svelte';
 
 	export let value: boolean | string;
 	export let text: string;
