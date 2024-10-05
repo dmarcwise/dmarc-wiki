@@ -1,10 +1,8 @@
 <script lang="ts">
-	import CrossEmoji from '$lib/emoji/CrossEmoji.svelte';
-	import CheckEmoji from '$lib/emoji/CheckEmoji.svelte';
 	import { ChevronRight } from 'lucide-svelte';
-	import WarningEmoji from '$lib/emoji/WarningEmoji.svelte';
 	import { getLogo } from '$lib/logos';
-	import { badgeColor } from '$lib/utils';
+	import BadgeSpf from '$lib/badge-spf.svelte';
+	import BadgeDkim from '$lib/badge-dkim.svelte';
 
 	export let provider;
 </script>
@@ -22,33 +20,8 @@
 	</h3>
 
 	<div class="flex flex-col sm:flex-row gap-x-3 gap-y-2 sm:ml-auto">
-		<div
-			class="rounded-lg border px-3 py-1 font-medium flex items-center justify-between gap-x-2
-							{badgeColor(provider.spfAlignment)}">
-			SPF alignment
-			{#if provider.spfAlignment === true}
-				<CheckEmoji />
-			{:else if provider.spfAlignment === 'partial'}
-				<WarningEmoji />
-			{:else}
-				<CrossEmoji />
-			{/if}
-		</div>
-
-		<div class="rounded-lg border px-3 py-1 font-medium flex items-center justify-between gap-x-2
-					{badgeColor(provider.dkim && provider.dkimAlignment)}">
-			{#if !provider.dkim}
-				No DKIM support
-			{:else}
-				DKIM alignment
-			{/if}
-
-			{#if provider.dkimAlignment}
-				<CheckEmoji />
-			{:else}
-				<CrossEmoji />
-			{/if}
-		</div>
+		<BadgeSpf {provider} />
+		<BadgeDkim {provider} />
 
 		<div class="rounded-lg border border-slate-200 dark:border-slate-700 px-3 sm:px-2 py-1
 							flex items-center justify-between bg-white dark:bg-slate-900

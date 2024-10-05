@@ -1,9 +1,7 @@
 <script>
 	import { getLogo } from '$lib/logos';
-	import CrossEmoji from '$lib/emoji/CrossEmoji.svelte';
-	import CheckEmoji from '$lib/emoji/CheckEmoji.svelte';
-	import WarningEmoji from '$lib/emoji/WarningEmoji.svelte';
-	import { badgeColor } from '$lib/utils';
+	import BadgeSpf from '$lib/badge-spf.svelte';
+	import BadgeDkim from '$lib/badge-dkim.svelte';
 
 	export let data;
 
@@ -38,33 +36,8 @@
 
 		<aside class="mt-10 flex flex-col sm:flex-row justify-center gap-3">
 
-			<div
-				class="rounded-lg border px-3 py-1 font-medium flex items-center justify-between gap-x-2
-							{badgeColor(provider.spfAlignment)}">
-				SPF alignment
-				{#if provider.spfAlignment === true}
-					<CheckEmoji />
-				{:else if provider.spfAlignment === 'paid'}
-					<WarningEmoji />
-				{:else}
-					<CrossEmoji />
-				{/if}
-			</div>
-
-			<div class="rounded-lg border px-3 py-1 font-medium flex items-center justify-between gap-x-2
-					{badgeColor(provider.dkim && provider.dkimAlignment)}">
-				{#if !provider.dkim}
-					No DKIM support
-				{:else}
-					DKIM alignment
-				{/if}
-
-				{#if provider.dkimAlignment}
-					<CheckEmoji />
-				{:else}
-					<CrossEmoji />
-				{/if}
-			</div>
+			<BadgeSpf {provider} />
+			<BadgeDkim {provider} />
 
 		</aside>
 
