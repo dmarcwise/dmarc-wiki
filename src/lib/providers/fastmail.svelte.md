@@ -15,7 +15,7 @@ updated: 2024-10-05
 
 <Block title="SPF">
 
-Fastmail supports SPF alignment, meaning that they use your custom domain in the `Envelope From` when sending emails.
+Fastmail is capable of sending SPF-aligned emails, meaning that they use your domain name in the `Envelope From` (or `Return-Path`) of email messages.
 
 This makes it possible to achieve DMARC compliance via SPF.
 
@@ -41,7 +41,7 @@ It is recommended to change `?all` to `~all`, otherwise no SPF policy is applie
 
 Fastmail supports custom DKIM signatures domains. This makes it possible to achieve DMARC compliance via DKIM.
 
-To set up Fastmail DKIM on your domain, add the following three **CNAME** records, after replacing `[example.com]` with your domain name:
+To set up Fastmail DKIM on your domain, add the following three **CNAME** records, replacing `[example.com]` with your domain name:
 
 | Host                                 | Value                               |
 | ------------------------------------ | ----------------------------------- |
@@ -59,18 +59,18 @@ Fastmail supports DMARC compliance via both SPF and DKIM, even with strict align
 
 Set up DMARC to:
 
-- Receive reports on email delivery to identify and fix authentication issues, and to find out who's sending from your domain.
+- Receive email delivery reports to identify and fix authentication issues and find out who's sending from your domain.
 - Choose the action to apply in case of SPF or DKIM non-compliance, blocking abuse attempts.
 
-Here's an example:
+Use a DMARC monitoring tool like [DMARCwise](https://dmarcwise.io) to simplify compliance and detect issues before they affect your domain reputation.
+
+Here's an example of a DMARC record, to be created as a `TXT` record on `_dmarc.[example.com]`:
 
 ```
 v=DMARC1; p=none; rua=mailto:[...];
 ```
 
-Once you confirm that all your sending providers are SPF-aligned and DKIM-aligned, you may strengthen the policy and optionally change the alignment mode.
-
-Here's an example:
+Fastmail allows setting strict alignment on both SPF and DKIM, so you may later strengthen the policy and change the alignment mode:
 
 ```
 v=DMARC1; p=reject; rua=mailto:[...]; aspf=s; adkim=s;
