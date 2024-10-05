@@ -12,19 +12,7 @@
 		month: 'short',
 		day: 'numeric'
 	});
-
-	const jsonLd = {
-		'@context': 'https://schema.org',
-		'@type': 'NewsArticle',
-		'headline': 'How to set up SPF, DKIM and DMARC for {provider.name}',
-		'dateModified': provider.updated.toISOString()
-	};
 </script>
-
-<svelte:head>
-	<title>How to set up SPF, DKIM and DMARC for {provider.name}</title>
-	{@html `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`}
-</svelte:head>
 
 <main class="container my-16">
 

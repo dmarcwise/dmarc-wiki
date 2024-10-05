@@ -12,6 +12,17 @@ export async function load({ params, parent }) {
 	}
 
 	return {
-		provider
+		provider,
+		seo: {
+			title: `How to set up SPF, DKIM and DMARC for ${provider.name}`,
+			description: `Learn how to set up SPF, DKIM and DMARC for your custom domain on ${provider.name}.`,
+			ogType: 'article',
+			jsonLd: {
+				'@context': 'https://schema.org',
+				'@type': 'NewsArticle',
+				headline: `How to set up SPF, DKIM and DMARC for ${provider.name}`,
+				dateModified: provider.updated.toISOString()
+			}
+		}
 	};
 }

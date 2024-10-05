@@ -7,10 +7,11 @@
 	import logo from '$lib/logo.png';
 	import { ModeWatcher } from 'mode-watcher';
 	import { userPrefersMode } from 'mode-watcher';
+	import MetaTags from '$lib/meta-tags.svelte';
 </script>
 
 <svelte:head>
-	<title>DMARC.wiki</title>
+	<MetaTags />
 </svelte:head>
 
 <ModeWatcher />
