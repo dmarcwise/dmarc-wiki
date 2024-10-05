@@ -13,6 +13,7 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
+		"@ethercorps/sveltekit-og": "^4.0.0-next.1",
 		"@kasisoft/remark-svelte-auto-import": "^0.2.5",
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/adapter-static": "^3.0.5",
@@ -21,6 +22,7 @@
 		"@sveltejs/vite-plugin-svelte": "^4.0.0-next.6",
 		"@tailwindcss/typography": "^0.5.15",
 		"@types/eslint": "^9.6.0",
+		"@types/node": "^22.7.4",
 		"autoprefixer": "^10.4.20",
 		"eslint": "^9.0.0",
 		"eslint-config-prettier": "^9.1.0",
