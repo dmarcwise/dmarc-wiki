@@ -1,4 +1,4 @@
-import type { SvelteComponent } from 'svelte';
+import type { Picture } from 'vite-imagetools';
 
 const logos = import.meta.glob<ImageModule>('$lib/logos/*.{png,jpg}', {
 	eager: true,
@@ -12,5 +12,5 @@ export function getLogo(fileName: string) {
 }
 
 interface ImageModule {
-	default: typeof SvelteComponent;
+	default: Picture;
 }
