@@ -2,7 +2,7 @@ import rehypeRewrite from 'rehype-rewrite';
 import { remarkSvelteAutoImport } from '@kasisoft/remark-svelte-auto-import';
 
 const exampleDomain = `
-<span class="border px-1.5 py-0.5 rounded-md">
+<span class="border border-slate-200 dark:border-slate-700 px-1.5 py-0.5 rounded-md">
 	example.com
 </span>
 `.trim();
