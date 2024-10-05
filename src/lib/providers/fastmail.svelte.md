@@ -49,10 +49,31 @@ To set up Fastmail DKIM on your domain, add the following three **CNAME** record
 | `fm2._domainkey.[example.com]` | `fm2.[example.com].dkim.fmhosted.com` |
 | `fm3._domainkey.[example.com]` | `fm3.[example.com].dkim.fmhosted.com` |
 
+[Source](https://www.fastmail.help/hc/en-us/articles/360060591153-Manual-DNS-configuration)
+
 </Block>
 
 <Block title="DMARC">
 
-TODO
+Fastmail supports DMARC compliance via both SPF and DKIM, even with strict alignment.
+
+Set up DMARC to:
+
+- Receive reports on email delivery to identify and fix authentication issues, and to find out who's sending from your domain.
+- Choose the action to apply when SPF or DKIM (alignment) fails, blocking abuse attempts.
+
+Example when using [DMARCwise](https://dmarcwise.io):
+
+```
+v=DMARC1; p=none; rua=mailto:rua+wgh9demlbcq1@dmarcwise.email;
+```
+
+Once confirmed that all your sending providers are SPF-aligned and DKIM-aligned, you may strengthen the policy and optionally change the alignment mode:
+
+```
+v=DMARC1; p=reject; aspf=s; adkim=s; rua=mailto:rua+wgh9demlbcq1@dmarcwise.email;
+```
+
+[Guide to DMARC compliance](https://dmarcwise.io/docs/guide-to-dmarc-compliance)
 
 </Block>

@@ -47,7 +47,7 @@
 			<svelte:component this={provider.component} />
 		</main>
 
-		<p class="mt-24 text-center text-sm text-slate-500">
+		<p class="mt-16 text-center text-sm text-slate-500">
 			Last updated on {formattedDate}
 		</p>
 
