@@ -20,7 +20,7 @@
 		<img src={logo} alt="DMARC.wiki" class="h-10 dark:rounded-md dark:border dark:border-slate-800" />
 	</a>
 
-	<a href="/" class="font-medium">
+	<a href="/about" class="font-medium uppercase hover:underline">
 		About
 	</a>
 </header>
