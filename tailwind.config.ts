@@ -3,7 +3,7 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 import typography from '@tailwindcss/typography';
 
 export default {
-	content: ['./src/**/*.{html,js,svelte,ts}'],
+	content: ['./src/**/*.{html,js,svelte,ts}', './mdsvex.config.js'],
 
 	theme: {
 		extend: {

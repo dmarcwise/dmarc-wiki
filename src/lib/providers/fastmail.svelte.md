@@ -17,7 +17,7 @@ updated: 2024-10-05
 
 Fastmail supports SPF alignment, meaning that they use your custom domain in the `Envelope From` when sending emails.
 
-This makes it possible to achieve DMARC alignment via SPF.
+This makes it possible to achieve DMARC compliance via SPF.
 
 To allow Fastmail servers to send emails from your domain, create the following **TXT** record:
 
@@ -39,7 +39,7 @@ It is recommended to change `?all` to `~all`, otherwise no SPF policy is applie
 
 <Block title="DKIM">
 
-Fastmail supports custom signing domains for DKIM. This makes it possible to achieve DMARC alignment via DKIM.
+Fastmail supports custom DKIM signatures domains. This makes it possible to achieve DMARC compliance via DKIM.
 
 To set up Fastmail DKIM on your domain, add the following three **CNAME** records, after replacing `[example.com]` with your domain name:
 
@@ -60,18 +60,20 @@ Fastmail supports DMARC compliance via both SPF and DKIM, even with strict align
 Set up DMARC to:
 
 - Receive reports on email delivery to identify and fix authentication issues, and to find out who's sending from your domain.
-- Choose the action to apply when SPF or DKIM (alignment) fails, blocking abuse attempts.
+- Choose the action to apply in case of SPF or DKIM non-compliance, blocking abuse attempts.
 
-Example when using [DMARCwise](https://dmarcwise.io):
-
-```
-v=DMARC1; p=none; rua=mailto:rua+wgh9demlbcq1@dmarcwise.email;
-```
-
-Once confirmed that all your sending providers are SPF-aligned and DKIM-aligned, you may strengthen the policy and optionally change the alignment mode:
+Here's an example:
 
 ```
-v=DMARC1; p=reject; aspf=s; adkim=s; rua=mailto:rua+wgh9demlbcq1@dmarcwise.email;
+v=DMARC1; p=none; rua=mailto:[...];
+```
+
+Once you confirm that all your sending providers are SPF-aligned and DKIM-aligned, you may strengthen the policy and optionally change the alignment mode.
+
+Here's an example:
+
+```
+v=DMARC1; p=reject; rua=mailto:[...]; aspf=s; adkim=s;
 ```
 
 [Guide to DMARC compliance](https://dmarcwise.io/docs/guide-to-dmarc-compliance)
