@@ -13,6 +13,7 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
+		"@kasisoft/remark-svelte-auto-import": "^0.2.5",
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/adapter-static": "^3.0.5",
 		"@sveltejs/enhanced-img": "^0.3.8",
@@ -32,6 +33,7 @@
 		"rehype-rewrite": "^4.0.2",
 		"svelte": "^5.0.0-next.1",
 		"svelte-check": "^4.0.0",
+		"svooltip": "^0.8.3",
 		"tailwindcss": "^3.4.9",
 		"typescript": "^5.0.0",
 		"typescript-eslint": "^8.0.0",

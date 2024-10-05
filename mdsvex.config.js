@@ -1,15 +1,5 @@
 import rehypeRewrite from 'rehype-rewrite';
-
-const dots = `
-<span class="bg-slate-700 px-2 py-1.5 mx-0.5 rounded-full
-						inline-flex items-center gap-x-1
-						relative -top-0.5"
-			aria-label="…">
-	<span class="bg-slate-500 inline-block size-1.5 rounded-full"></span>
-	<span class="bg-slate-500 inline-block size-1.5 rounded-full"></span>
-	<span class="bg-slate-500 inline-block size-1.5 rounded-full"></span>
-</span>
-`.trim();
+import { remarkSvelteAutoImport } from '@kasisoft/remark-svelte-auto-import';
 
 const exampleDomain = `
 <span class="border px-1.5 py-0.5 rounded-md">
@@ -24,10 +14,33 @@ const mdsvexOptions = {
 	// Disable syntax highlighting
 	highlight: {
 		highlighter: (text) => {
-			text = text.replace('[...]', dots);
 			return `<pre>${text}</pre>`;
 		}
 	},
+	remarkPlugins: [
+		// In code blocks, replace [...] with <DotsBadge />
+		() => {
+			return (tree) => {
+				for (const node of tree.children) {
+					if (node.type === 'code') {
+						node.value = node.value.replace('[...]', '<DotsBadge />');
+					}
+				}
+			};
+		},
+		[
+			remarkSvelteAutoImport,
+			{
+				// debug: ['ComponentMap'],
+				componentMap: {
+					Block: '$lib/mdsvex/block.svelte',
+					// TODO: this doesn't work because this plugin looks at the file content, not the modified tree.
+					//       find a way to always import it maybe?
+					DotsBadge: '$lib/mdsvex/dots-badge.svelte'
+				}
+			}
+		]
+	],
 	rehypePlugins: [
 		// Remove rel="nofollow" from links to dmarcwise.io
 		[

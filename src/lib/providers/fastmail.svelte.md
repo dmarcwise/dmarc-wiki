@@ -10,7 +10,7 @@ updated: 2024-10-05
 ---
 
 <script>
-  import Block from '$lib/block.svelte';
+  import DotsBadge from '$lib/mdsvex/dots-badge.svelte';
 </script>
 
 <Block title="SPF">

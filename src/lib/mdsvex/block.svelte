@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { tooltip } from 'svooltip';
+	import 'svooltip/styles.css'; // Include default styling
+
 	export let title: string;
 </script>
 
