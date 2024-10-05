@@ -25,5 +25,10 @@
     --svooltip-weight: 500;
     --svooltip-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     max-width: 250px;
+
+    .dark & {
+      --svooltip-bg: #1e293b;
+      --svooltip-text: #CAD5E1;
+    }
   }
 }
