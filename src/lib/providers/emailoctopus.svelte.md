@@ -35,9 +35,9 @@ EmailOctopus supports custom DKIM signatures domains. This makes it possible to 
 
 To set up EmailOctopus DKIM on your domain, create a `CNAME` record as instructed during the [sender verification process](https://emailoctopus.com/account/senders):
 
-| Host                          | Value                        |
-| ----------------------------- | ---------------------------- |
-| `eo._domainkey.[example.com]` | As provided by EmailOctopus. |
+| Type    | Host                          | Value                        |
+| ------- | ----------------------------- | ---------------------------- |
+| `CNAME` | `eo._domainkey.[example.com]` | As provided by EmailOctopus. |
 
 [Source](https://help.emailoctopus.com/article/160-verifying-a-new-domain)
 

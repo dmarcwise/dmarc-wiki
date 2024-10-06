@@ -25,7 +25,7 @@ Since HubSpot uses a domain of theirs as the `Envelope From` (usually a subdomai
 
 While HubSpot still [says](https://knowledge.hubspot.com/marketing-email/overview-of-email-authentication?hubs_content=knowledge.hubspot.com/marketing-email/manage-email-authentication-in-hubspot&hubs_content-cta=this%20article#guide-to-spf) that it's «highly recommended» to add the SPF record anyway, there's no technical reason to do that: if anything, this will increase the risk of reaching the limit of 10 DNS lookups.
 
-<p class="inline-block border border-slate-200 dark:border-slate-700 px-3 py-0.5 rounded-md font-mono text-base font-semibold">With dedicated IP</p>
+### With dedicated IP
 
 **If you set up a dedicated IP** (contact sales for pricing), HubSpot will send emails using a subdomain of your custom domain as the `Envelope From`, therefore allowing SPF alignment.
 
@@ -39,7 +39,7 @@ As the HubSpot documentation says, most customers set up an `Envelope From` that
 
 <Block title="DKIM">
 
-HubSpot supports DMARC compliance via DKIM, by supporting custom DKIM signatures.
+HubSpot supports DMARC compliance via DKIM, thanks to custom DKIM signatures.
 
 You can find the required records to set up DKIM in **Settings** → **Content** → **Domains & URLs**.
 

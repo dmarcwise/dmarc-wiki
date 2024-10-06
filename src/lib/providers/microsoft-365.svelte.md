@@ -44,10 +44,10 @@ To set up Microsoft 365 DKIM on your domain, follow these instructions:
 - Click on the toggle below **Sign messages for this domain with DKIM signatures**.
 - You will now need to create two `CNAME` records on your domain, with the values shown in the dialog that opens:
 
-| Host                                 | Value                            |
-| ------------------------------------ | -------------------------------- |
-| `selector1._domainkey.[example.com]` | As shown in the Defender portal. |
-| `selector2._domainkey.[example.com]` | As shown in the Defender portal. |
+| Type    | Host                                 | Value                            |
+| ------- | ------------------------------------ | -------------------------------- |
+| `CNAME` | `selector1._domainkey.[example.com]` | As shown in the Defender portal. |
+| `CNAME` | `selector2._domainkey.[example.com]` | As shown in the Defender portal. |
 
 - (If the number of records shown in the Microsoft Defender portal doesn't match with this example, abide by the Microsoft instructions.)
 - Back in the Microsoft Defender portal, close the dialog and click the **Sign messages for this domain with DKIM signatures** toggle again.

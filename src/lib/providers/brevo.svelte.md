@@ -32,7 +32,7 @@ Since Brevo uses a domain of theirs as the `Envelope From` (often a subdomain of
 
 <Block title="DKIM">
 
-Brevo supports DMARC compliance via DKIM, by supporting custom DKIM signatures.
+Brevo supports DMARC compliance via DKIM, thanks to custom DKIM signatures.
 
 To set up Brevo DKIM on your domain, follow these instructions:
 

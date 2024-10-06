@@ -43,9 +43,9 @@ To set up Google Workspace DKIM on your domain, follow these instructions:
 
 - You will now need to create a `TXT` record on your domain, with the values shown in the admin console:
 
-| Host                              | Value                          |
-| --------------------------------- | ------------------------------ |
-| `google._domainkey.[example.com]` | As shown in the admin console. |
+| Type  | Host                              | Value                          |
+| ----- | --------------------------------- | ------------------------------ |
+| `TXT` | `google._domainkey.[example.com]` | As shown in the admin console. |
 
 - After creating the record, go back to the admin console and click **Start authentication**.
 

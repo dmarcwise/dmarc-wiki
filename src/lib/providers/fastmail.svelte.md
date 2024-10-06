@@ -41,13 +41,13 @@ It is recommended to change `?all` to `~all`, otherwise no SPF policy is applie
 
 Fastmail supports custom DKIM signatures domains. This makes it possible to achieve DMARC compliance via DKIM.
 
-To set up Fastmail DKIM on your domain, add the following three **CNAME** records, replacing `[example.com]` with your domain name:
+To set up Fastmail DKIM on your domain, add the following three `CNAME` records, replacing `[example.com]` with your domain name:
 
-| Host                                 | Value                               |
-| ------------------------------------ | ----------------------------------- |
-| `fm1._domainkey.[example.com]` | `fm1.[example.com].dkim.fmhosted.com` |
-| `fm2._domainkey.[example.com]` | `fm2.[example.com].dkim.fmhosted.com` |
-| `fm3._domainkey.[example.com]` | `fm3.[example.com].dkim.fmhosted.com` |
+| Type                             | Host                                 | Value                               |
+| ------------------------------------ | ----------------------------------- | ----------------------------------- |
+| `TXT` | `fm1._domainkey.[example.com]` | `fm1.[example.com].dkim.fmhosted.com` |
+| `TXT` | `fm2._domainkey.[example.com]` | `fm2.[example.com].dkim.fmhosted.com` |
+| `TXT` | `fm3._domainkey.[example.com]` | `fm3.[example.com].dkim.fmhosted.com` |
 
 [Source](https://www.fastmail.help/hc/en-us/articles/360060591153-Manual-DNS-configuration)
 
