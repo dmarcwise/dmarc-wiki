@@ -58,8 +58,7 @@ const mdsvexOptions = {
 					if (node.tagName === 'code') {
 						for (const child of node.children) {
 							if (child.type === 'text') {
-								child.value = child.value.replace('[example.com]', badge('example.com'));
-								child.value = child.value.replace('[example]', badge('example'));
+								child.value = child.value.replace(/\[([\w.]+)]/g, badge('$1'));
 							}
 						}
 					}

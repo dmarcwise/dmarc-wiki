@@ -12,14 +12,17 @@ updated: 2024-10-05
 <script>
   import DotsBadge from '$lib/mdsvex/dots-badge.svelte';
 </script>
-
 <Block title="SPF">
 
-**If you don't have a dedicated IP**, Brevo is **not capable** of sending SPF-aligned emails, meaning that their mail servers don't use your domain name in the `Envelope From` (or `Return-Path`) of email messages.
+### Without dedicated IP
 
-Since Brevo uses a domain of theirs as the `Envelope From` (often a subdomain of `sender-sib.com`) and SPF retrieves the SPF `TXT` record from that domain, you don't need to allow Brevo in the SPF record of your domain.
+**If you don't have a dedicated IP**, Brevo is **not capable** of sending SPF-aligned emails, meaning that their mail servers won't use your domain name in the `Envelope From` (or `Return-Path`) of email messages.
 
 In this situation it's not possible to achieve DMARC compliance via SPF with Brevo.
+
+Since Brevo uses a domain of theirs as the `Envelope From` (often a subdomain of `sender-sib.com`) and SPF retrieves the SPF `TXT` record from that domain, **you don't need to include Brevo in the SPF record** of your domain. In most cases, doing it anyway shouldn't hurt, but you increase the risk of reaching the limit of 10 DNS lookups.
+
+### With dedicated IP
 
 **If you set up a dedicated IP** ($251 / year), Brevo will send emails using a subdomain of your custom domain as the `Envelope From`, therefore allowing SPF alignment.
 
@@ -74,7 +77,7 @@ v=DMARC1; p=none; rua=mailto:[...];
 
 You may later strengthen the policy and change the alignment mode, but make sure your email setup allows so by reviewing the DMARC reports.
 
-For example, if you use a dedicated IP with an entire subdomain dedicated to Brevo only, you'll be able to set strict alignment mode on both SPF and DKIM.
+For example, if you use a dedicated IP with an entire subdomain dedicated to Brevo only (and emails sent from an address on that domain), you'll be able to set strict alignment mode on both SPF and DKIM.
 
 ```
 v=DMARC1; p=reject; rua=mailto:[...]; aspf=s; adkim=s;
