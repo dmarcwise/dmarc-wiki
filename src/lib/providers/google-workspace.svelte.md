@@ -60,7 +60,7 @@ Google Workspace supports DMARC compliance via both SPF and DKIM, even with stri
 Set up DMARC to:
 
 - Receive email delivery reports to identify and fix authentication issues and find out who's sending from your domain.
-- Choose the action to apply in case of SPF or DKIM non-compliance, blocking abuse attempts.
+- Choose the action to apply in case of SPF and DKIM non-compliance, blocking abuse attempts.
 
 Use a DMARC monitoring tool like [DMARCwise](https://dmarcwise.io) to simplify compliance and detect issues before they affect your domain reputation.
 
