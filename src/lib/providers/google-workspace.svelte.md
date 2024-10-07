@@ -25,7 +25,9 @@ To allow Google servers to send emails from your domain, create the following **
 v=spf1 include:_spf.google.com ~all
 ```
 
-[Source](https://support.google.com/a/answer/33786)
+We recommend using the `~all` directive instead of `-all`. Learn more in the link below.
+
+[Source](https://support.google.com/a/answer/33786) • [Learn more about `~all`](https://dmarcwise.io/learn/email/spf/setup)
 
 </Block>
 
