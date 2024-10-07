@@ -27,11 +27,11 @@ While HubSpot still [says](https://knowledge.hubspot.com/marketing-email/overvie
 
 ### With dedicated IP
 
-**If you set up a dedicated IP** (contact sales for pricing), HubSpot will send emails using a subdomain of your custom domain as the `Envelope From`, therefore allowing SPF alignment.
+**If you set up a dedicated IP** (contact sales for pricing, or [see here](https://community.hubspot.com/t5/HubSpot-Ideas/Define-custom-Return-Path-without-a-dedicated-IP/idc-p/880596/highlight/true#M160850)), HubSpot will send emails using your domain in the `Envelope From`, therefore allowing SPF alignment.
 
 In this case, you will be provided with a domain-specific SPF record during the setup process of the dedicated IP.
 
-As the HubSpot documentation says, most customers set up an `Envelope From` that looks like `12345m.[example.com]`, while still sending emails from the `@[example.com]` domain (this has implications on the DMARC alignment mode, see below for more details).
+As the HubSpot documentation says, most customers set up an `Envelope From` that looks like `12345m.example.com`, while still sending emails from the `@example.com` domain (this has implications on the DMARC alignment modes you can use, see below for more details).
 
 [Source](https://knowledge.hubspot.com/marketing-email/manage-email-authentication-in-hubspot?hubs_content=knowledge.hubspot.com/it/marketing-email/manage-email-authentication-in-hubspot&hubs_content-cta=English) • [Source/2](https://knowledge.hubspot.com/marketing-email/understand-email-sending-in-hubspot)
 
@@ -63,7 +63,7 @@ Set up DMARC to:
 
 Use a DMARC monitoring tool like [DMARCwise](https://dmarcwise.io) to simplify compliance and detect issues before they affect your domain reputation.
 
-Here's an example of a DMARC record, to be created as a `TXT` record on `_dmarc.[example.com]`:
+Here's an example of a DMARC record, to be created as a `TXT` record on `_dmarc.example.com`:
 
 ```
 v=DMARC1; p=none; rua=mailto:[...];
@@ -73,8 +73,8 @@ You may later strengthen the policy and change the alignment mode, but remember 
 
 - If you're not using a dedicated IP you won't be able to reach SPF alignment.
 - If you're using a dedicated IP:
-  - If you send emails from `@[example.com]` or even `@[news.example.com]` but your `Envelope From` domain is different, like `12345m.[example.com]`, **you cannot use the strict SPF alignment mode**.
-  - If you send emails from `@[news.example.com]` and your `Envelope From` domain is also `@[news.example.com]`, **you may use strict SPF alignment**.
+  - If you send emails from `@example.com` or even `@news.example.com` but your `Envelope From` domain is different, like `12345m.example.com`, **you cannot use the strict SPF alignment mode**.
+  - If you send emails from `@news.example.com` and your `Envelope From` domain is also `@news.example.com`, **you may use strict SPF alignment**.
 - The DKIM signature domain should always match your sender domain exactly, so **you may use strict DKIM alignment**.
 
 Make sure you also consider other sending sources unrelated to HubSpot.
