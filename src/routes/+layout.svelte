@@ -42,14 +42,14 @@
 
 <hr class="mt-16">
 
-<footer class="container py-12 flex">
+<footer class="container py-12 flex flex-col sm:flex-row gap-4">
 	<p>
 		Made by <a href="https://dmarcwise.io" class="underline">DMARCwise</a>
 		•
 		<a href="https://github.com/dmarcwise/dmarc-wiki" class="underline">GitHub</a>
 	</p>
 
-	<select class="p-2 rounded-md ml-auto"
+	<select class="p-2 rounded-md sm:ml-auto"
 					bind:value={$userPrefersMode}>
 		<option value="system">Auto</option>
 		<option value="light">Light</option>

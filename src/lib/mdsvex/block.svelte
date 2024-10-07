@@ -6,7 +6,7 @@
 </script>
 
 <div class="!mt-20 sm:grid grid-cols-3 gap-4">
-	<h2 class="text-5xl not-prose">
+	<h2 class="text-5xl not-prose mb-10">
 		{title}
 	</h2>
 
