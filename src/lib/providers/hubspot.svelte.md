@@ -27,13 +27,13 @@ While HubSpot still [says](https://knowledge.hubspot.com/marketing-email/overvie
 
 ### With dedicated IP
 
-**If you set up a dedicated IP** (contact sales for pricing, or [see here](https://community.hubspot.com/t5/HubSpot-Ideas/Define-custom-Return-Path-without-a-dedicated-IP/idc-p/880596/highlight/true#M160850)), HubSpot will send emails using your domain in the `Envelope From`, therefore allowing SPF alignment.
+**If you set up a dedicated IP** ($300 per month), HubSpot will send emails using your domain in the `Envelope From`, therefore allowing SPF alignment.
 
 In this case, you will be provided with a domain-specific SPF record during the setup process of the dedicated IP.
 
 As the HubSpot documentation says, most customers set up an `Envelope From` that looks like `12345m.example.com`, while still sending emails from the `@example.com` domain (this has implications on the DMARC alignment modes you can use, see below for more details).
 
-[Source](https://knowledge.hubspot.com/marketing-email/manage-email-authentication-in-hubspot?hubs_content=knowledge.hubspot.com/it/marketing-email/manage-email-authentication-in-hubspot&hubs_content-cta=English) • [Source/2](https://knowledge.hubspot.com/marketing-email/understand-email-sending-in-hubspot)
+[Source](https://knowledge.hubspot.com/marketing-email/manage-email-authentication-in-hubspot?hubs_content=knowledge.hubspot.com/it/marketing-email/manage-email-authentication-in-hubspot&hubs_content-cta=English) • [Source/2](https://knowledge.hubspot.com/marketing-email/understand-email-sending-in-hubspot) • [Dedicated IP pricing](https://legal.hubspot.com/hubspot-product-and-services-catalog#Addons)
 
 </Block>
 
