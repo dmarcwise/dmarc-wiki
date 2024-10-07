@@ -8,6 +8,16 @@
 	import { ModeWatcher } from 'mode-watcher';
 	import { userPrefersMode } from 'mode-watcher';
 	import MetaTags from '$lib/meta-tags.svelte';
+	import { OpenPanel } from '@openpanel/web';
+	import { PUBLIC_OPENPANEL_CLIENT_ID as OPENPANEL_CLIENT_ID } from '$env/static/public';
+
+	new OpenPanel({
+		clientId: OPENPANEL_CLIENT_ID,
+		trackScreenViews: true,
+		trackOutgoingLinks: true,
+		trackAttributes: true,
+		filter: () => window.localStorage.getItem('dmarcwise/op/disabled') !== 'true'
+	});
 </script>
 
 <svelte:head>
