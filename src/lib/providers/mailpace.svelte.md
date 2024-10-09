@@ -2,7 +2,7 @@
 name: MailPace
 slug: mailpace
 logo: mailpace.png
-type: marketing
+type: transactional
 spfAlignment: true
 dkim: true
 dkimAlignment: true

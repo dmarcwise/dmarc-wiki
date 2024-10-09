@@ -5,6 +5,7 @@
 
 	const hostingProviders = data.hostingProviders;
 	const marketingProviders = data.marketingProviders;
+	const transactionalProviders = data.transactionalProviders;
 </script>
 
 <main class="container">
@@ -29,7 +30,17 @@
 	</div>
 
 	<h2 class="mt-12 text-4xl">
-		Marketing, newsletters & transactional
+		Transactional
+	</h2>
+
+	<div class="grid mt-8 gap-y-4">
+		{#each transactionalProviders as provider}
+			<ProviderRow {provider} />
+		{/each}
+	</div>
+
+	<h2 class="mt-12 text-4xl">
+		Marketing & newsletters
 	</h2>
 
 	<div class="grid mt-8 gap-y-4">

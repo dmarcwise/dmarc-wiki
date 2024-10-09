@@ -5,7 +5,8 @@ export async function load({ params, parent }) {
 
 	const provider =
 		data.hostingProviders.find((p) => p.slug === params.provider) ||
-		data.marketingProviders.find((p) => p.slug === params.provider);
+		data.marketingProviders.find((p) => p.slug === params.provider) ||
+		data.transactionalProviders.find((p) => p.slug === params.provider);
 
 	if (!provider) {
 		error(404);

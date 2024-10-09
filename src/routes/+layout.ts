@@ -7,6 +7,7 @@ export async function load() {
 
 	const hostingProviders = [];
 	const marketingProviders = [];
+	const transactionalProviders = [];
 
 	for (const importFile of Object.values(files)) {
 		const module = await importFile();
@@ -25,15 +26,19 @@ export async function load() {
 			hostingProviders.push(provider);
 		} else if (module.metadata.type === 'marketing') {
 			marketingProviders.push(provider);
+		} else if (module.metadata.type === 'transactional') {
+			transactionalProviders.push(provider);
 		}
 	}
 
 	hostingProviders.sort((a, b) => a.name.localeCompare(b.name));
 	marketingProviders.sort((a, b) => a.name.localeCompare(b.name));
+	transactionalProviders.sort((a, b) => a.name.localeCompare(b.name));
 
 	return {
 		hostingProviders,
-		marketingProviders
+		marketingProviders,
+		transactionalProviders
 	};
 }
 
