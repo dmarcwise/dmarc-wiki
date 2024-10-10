@@ -9,7 +9,7 @@
 
 	const formattedDate = provider.updated.toLocaleDateString(undefined, {
 		year: 'numeric',
-		month: 'short',
+		month: 'long',
 		day: 'numeric'
 	});
 </script>
