@@ -41,7 +41,7 @@ To set up Microsoft 365 DKIM on your domain, follow these instructions:
 
 - Navigate to [Email authentication settings](https://security.microsoft.com/authentication) in the Microsoft Defender portal.
 - Find the row corresponding to your domain (i.e. `[example.com]`, not `[example].onmicrosoft.com`) and click on it.
-- Click on the toggle below **Sign messages for this domain with DKIM signatures**.
+- Click on the toggle below **Sign messages for this domain with DKIM signatures**, or if you don't see it **Create DKIM keys**.
 - You will now need to create two `CNAME` records on your domain, with the values shown in the dialog that opens:
 
 | Type    | Host                                 | Value                            |
