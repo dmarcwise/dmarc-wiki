@@ -16,6 +16,11 @@ declare global {
 
 		export const metadata: Record<string, unknown>;
 	}
+
+	declare module '*?base64' {
+		const content: string;
+		export default content;
+	}
 }
 
 export {};
