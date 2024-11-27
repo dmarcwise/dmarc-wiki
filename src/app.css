@@ -27,8 +27,8 @@
     max-width: 250px;
 
     .dark & {
-      --svooltip-bg: #1e293b;
-      --svooltip-text: #CAD5E1;
+      --svooltip-bg: #1e293b; /* slate-800 */
+      --svooltip-text: #cad5e1; /* from typography */
     }
   }
 }

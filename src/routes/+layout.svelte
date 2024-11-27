@@ -6,10 +6,22 @@
 	import 'svooltip/styles.css';
 	import logo from '$lib/logo.png';
 	import { ModeWatcher } from 'mode-watcher';
+	import { userPrefersMode } from 'mode-watcher';
+	import MetaTags from '$lib/meta-tags.svelte';
+	import { OpenPanel } from '@openpanel/web';
+	import { PUBLIC_OPENPANEL_CLIENT_ID as OPENPANEL_CLIENT_ID } from '$env/static/public';
+
+	new OpenPanel({
+		clientId: OPENPANEL_CLIENT_ID,
+		trackScreenViews: true,
+		trackOutgoingLinks: true,
+		trackAttributes: true,
+		filter: () => window.localStorage.getItem('dmarcwise/op/disabled') !== 'true'
+	});
 </script>
 
 <svelte:head>
-	<title>DMARC.wiki</title>
+	<MetaTags />
 </svelte:head>
 
 <ModeWatcher />
@@ -19,15 +31,28 @@
 		<img src={logo} alt="DMARC.wiki" class="h-10 dark:rounded-md dark:border dark:border-slate-800" />
 	</a>
 
-	<a href="/" class="font-medium">
+	<a href="/about" class="font-medium uppercase hover:underline">
 		About
 	</a>
 </header>
 
 <hr>
 
-<slot></slot>
+<slot />
 
-<footer class="container mt-10 py-5">
+<hr class="mt-16">
 
+<footer class="container py-12 flex flex-col sm:flex-row gap-4">
+	<p>
+		Made by <a href="https://dmarcwise.io" class="underline">DMARCwise</a>
+		•
+		<a href="https://github.com/dmarcwise/dmarc-wiki" class="underline">GitHub</a>
+	</p>
+
+	<select class="p-2 rounded-md sm:ml-auto"
+					bind:value={$userPrefersMode}>
+		<option value="system">Auto</option>
+		<option value="light">Light</option>
+		<option value="dark">Dark</option>
+	</select>
 </footer>

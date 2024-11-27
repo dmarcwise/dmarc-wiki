@@ -1,11 +1,13 @@
 import rehypeRewrite from 'rehype-rewrite';
 import { remarkSvelteAutoImport } from '@kasisoft/remark-svelte-auto-import';
 
-const exampleDomain = `
+const badge = function (value) {
+	return `
 <span class="border border-slate-200 dark:border-slate-700 px-1.5 py-0.5 rounded-md">
-	example.com
+	${value}
 </span>
 `.trim();
+};
 
 /** @type {import('mdsvex').MdsvexOptions} */
 const mdsvexOptions = {
@@ -56,7 +58,7 @@ const mdsvexOptions = {
 					if (node.tagName === 'code') {
 						for (const child of node.children) {
 							if (child.type === 'text') {
-								child.value = child.value.replace('[example.com]', exampleDomain);
+								child.value = child.value.replace(/\[([\w.@]+)]/g, badge('$1'));
 							}
 						}
 					}

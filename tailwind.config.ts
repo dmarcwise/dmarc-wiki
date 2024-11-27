@@ -3,7 +3,9 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 import typography from '@tailwindcss/typography';
 
 export default {
-	content: ['./src/**/*.{html,js,svelte,ts}', './mdsvex.config.js'],
+	content: ['./src/**/*.{html,js,svelte,ts,svelte.md}', './mdsvex.config.js'],
+
+	darkMode: 'selector',
 
 	theme: {
 		extend: {
