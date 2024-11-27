@@ -1,3 +1,7 @@
+<script>
+
+</script>
+
 <div tw="bg-gray-50 flex flex-col w-full h-full py-14 px-14">
 	<img src="http://localhost:5174/src/lib/logo.png" alt="DMARC.wiki"
 			 tw="h-16" />
