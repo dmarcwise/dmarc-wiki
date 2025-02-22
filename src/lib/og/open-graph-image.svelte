@@ -10,7 +10,7 @@
 </script>
 
 <div tw="bg-gray-50 flex flex-col w-full h-full py-14 px-14">
-	<img src="https://assets.dmarcwise.io/wiki-logo-600.png" alt="DMARC.wiki"
+	<img src="https://dmarc.wiki/assets/logo-600.png" alt="DMARC.wiki"
 			 tw="h-16" />
 
 	<div tw="mt-auto flex items-center">
