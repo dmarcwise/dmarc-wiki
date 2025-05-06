@@ -15,11 +15,10 @@
 	"devDependencies": {
 		"@ethercorps/sveltekit-og": "^4.0.0-next.1",
 		"@kasisoft/remark-svelte-auto-import": "^0.2.5",
-		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/adapter-static": "^3.0.5",
 		"@sveltejs/enhanced-img": "^0.3.8",
-		"@sveltejs/kit": "^2.8.4",
-		"@sveltejs/vite-plugin-svelte": "^4.0.0-next.6",
+		"@sveltejs/kit": "^2.20.8",
+		"@sveltejs/vite-plugin-svelte": "^5.0.3",
 		"@tailwindcss/typography": "^0.5.15",
 		"@types/eslint": "^9.6.0",
 		"@types/node": "^22.7.4",
@@ -33,13 +32,13 @@
 		"prettier-plugin-svelte": "^3.1.2",
 		"prettier-plugin-tailwindcss": "^0.6.5",
 		"rehype-rewrite": "^4.0.2",
-		"svelte": "^5.0.0-next.1",
+		"svelte": "^5.28.2",
 		"svelte-check": "^4.0.0",
-		"svooltip": "^0.8.3",
+		"svooltip": "^0.9.0",
 		"tailwindcss": "^3.4.9",
 		"typescript": "^5.0.0",
 		"typescript-eslint": "^8.0.0",
-		"vite": "^5.0.3"
+		"vite": "^6.3.5"
 	},
 	"type": "module",
 	"dependencies": {
