@@ -17,7 +17,7 @@ updated: 2024-10-05
 
 ### Without dedicated IP
 
-Mailchimp is **not capable** of sending SPF-aligned emails, meaning that Mailchimp mail servers won't use your domain name in the `Envelope From` (or `Return-Path`) of email messages.
+By default, Mailchimp is **not capable** of sending SPF-aligned emails, meaning that Mailchimp mail servers won't use your domain name in the `Envelope From` (or `Return-Path`) of email messages.
 
 In this situation it's not possible to achieve DMARC compliance via SPF with Mailchimp.
 
@@ -26,6 +26,10 @@ Since Mailchimp uses a domain of theirs as the `Envelope From` (usually a subdom
 While you may find guides and resources telling you to add `include:servers.mcsv.net` to your SPF record, there's no technical reason to do that: if anything, this will increase the risk of reaching the limit of 10 DNS lookups.
 
 [Source](https://mailchimp.com/help/my-campaign-from-name-shows-mcsvnet/)
+
+### With dedicated IP
+
+Mailchimp is capable of sending SPF-aligned emails when a dedicated IP is configured. Contact Mailchimp's support for more information, as there is no public documentation about this.
 
 </Block>
 
