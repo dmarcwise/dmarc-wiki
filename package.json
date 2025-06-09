@@ -13,7 +13,7 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
-		"@ethercorps/sveltekit-og": "^4.0.0-next.1",
+		"@ethercorps/sveltekit-og": "^3.0.0-next.18",
 		"@kasisoft/remark-svelte-auto-import": "^0.2.5",
 		"@sveltejs/adapter-static": "^3.0.5",
 		"@sveltejs/enhanced-img": "^0.3.8",
