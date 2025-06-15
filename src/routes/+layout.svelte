@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import '@fontsource/zilla-slab/600.css';
 	import '@fontsource/zilla-slab/700.css';
 	import '@fontsource-variable/inter';
@@ -8,16 +8,10 @@
 	import { ModeWatcher } from 'mode-watcher';
 	import { userPrefersMode } from 'mode-watcher';
 	import MetaTags from '$lib/meta-tags.svelte';
-	import { OpenPanel } from '@openpanel/web';
-	import { PUBLIC_OPENPANEL_CLIENT_ID as OPENPANEL_CLIENT_ID } from '$env/static/public';
+	import { dev } from '$app/environment';
+	import { injectAnalytics } from '@vercel/analytics/sveltekit';
 
-	new OpenPanel({
-		clientId: OPENPANEL_CLIENT_ID,
-		trackScreenViews: true,
-		trackOutgoingLinks: true,
-		trackAttributes: true,
-		filter: () => window.localStorage.getItem('dmarcwise/op/disabled') !== 'true'
-	});
+	injectAnalytics({ mode: dev ? 'development' : 'production' });
 </script>
 
 <svelte:head>

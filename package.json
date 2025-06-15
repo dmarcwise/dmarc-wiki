@@ -44,7 +44,7 @@
 	"dependencies": {
 		"@fontsource-variable/inter": "^5.1.0",
 		"@fontsource/zilla-slab": "^5.1.0",
-		"@openpanel/web": "^1.0.1",
+		"@vercel/analytics": "^1.5.0",
 		"lucide-svelte": "^0.447.0",
 		"mode-watcher": "^0.4.1",
 		"svelte-sitemap": "^2.6.0"
