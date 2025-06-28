@@ -12,22 +12,11 @@ updated: 2025-06-26
 <script>
   import DotsBadge from '$lib/mdsvex/dots-badge.svelte';
 </script>
-
 <Block title="SPF">
 
-### With sending from alias domains
+### When sending from the primary domain
 
-**If you send from an alias domain**, Google Workspace is **not capable** of sending SPF-aligned emails, meaning that their mail servers won't use your alias domain name in the `Envelope From` (or `Return-Path`) of email messages.
-
-In this situation it's not possible to achieve DMARC compliance via SPF with Google Workspace.
-
-Since Google Workspace uses your configured primary domain as the `Envelope From` and SPF retrieves the SPF `TXT` record from that domain, **you don't need to include Google Workspace in the SPF record** of your domain. The domain used as the as the `Envelope From` is **not configurable**, and Google refuses to see this as an issue since DMARC compliance can still be achieved via DKIM, but some users have reported that specific mail providers have blocked their mail due to this misalignment.
-
-Sources: [\[1\]](https://support.google.com/a/thread/69536504/spf-alignment-when-sending-from-a-domain-alias) [\[2\]](https://www.youtube.com/watch?v=fi1xwO9zApo) [\[3\]](https://old.reddit.com/r/DMARC/comments/1i23w1l/help_requested_looking_for_an_actual_dmarc_expert/)
-
-### Without sending from alias domains
-
-Google Workspace is capable of sending SPF-aligned emails, meaning that they use your domain name in the `Envelope From` (or `Return-Path`) of email messages.
+Google Workspace is capable of sending SPF-aligned emails when sending emails from the **primary domain**, meaning that they use the domain name in the `Envelope From` (or `Return-Path`) of email messages.
 
 This makes it possible to achieve DMARC compliance via SPF.
 
@@ -40,6 +29,18 @@ v=spf1 include:_spf.google.com ~all
 We recommend using the `~all` directive instead of `-all`. Learn more in the link below.
 
 [Source](https://support.google.com/a/answer/33786) • [Learn more about `~all`](https://dmarcwise.io/learn/email/spf/setup)
+
+### When sending from alias domains
+
+If you send from an **alias domain**, Google Workspace is **not capable** of sending SPF-aligned emails, meaning that their mail servers won't use your alias domain name in the `Envelope From` (or `Return-Path`) of email messages.
+
+In this situation it's not possible to achieve DMARC compliance via SPF with Google Workspace.
+
+Since Google Workspace uses your configured primary domain as the `Envelope From` and SPF retrieves the SPF `TXT` record from that domain, **you don't need to include Google Workspace in the SPF record** of your alias domains.
+
+The domain used as the as the `Envelope From` is not configurable: Google doesn't seem to see this as an issue because DMARC compliance can still be achieved via DKIM, but some users have reported that specific mail providers have blocked their mail due to this misalignment.
+
+[Source](https://support.google.com/a/thread/69536504/spf-alignment-when-sending-from-a-domain-alias) • [Source/2](https://old.reddit.com/r/DMARC/comments/1i23w1l/help_requested_looking_for_an_actual_dmarc_expert/)
 
 </Block>
 
