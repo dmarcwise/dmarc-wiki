@@ -4,8 +4,9 @@
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
+        "prepare": "svelte-kit sync",
 		"build": "vite build",
-		"postbuild": "npx svelte-sitemap --domain https://dmarc.wiki --out-dir .vercel/output/static",
+		"postbuild": "npx svelte-sitemap --domain https://dmarc.wiki",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",

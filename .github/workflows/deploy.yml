@@ -1,0 +1,35 @@
+name: Deploy
+run-name: Deploy ${{ github.sha }}
+
+on:
+  push:
+    branches:
+      - "main"
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+          cache: 'npm'
+      - name: Install npm dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Prepare deploy
+        run: |
+          set -euo pipefail
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          echo "${{ secrets.DEPLOY_PRIVATE_KEY }}" > ~/.ssh/key
+          echo "${{ secrets.SSH_CONFIG }}" > ~/.ssh/config
+          chmod 600 ~/.ssh/*
+      - name: Deploy to dmw-prod-1
+        run: ./.github/workflows/deploy-step.sh dmw-prod-1
+      - name: Deploy to dmw-prod-2
+        run: ./.github/workflows/deploy-step.sh dmw-prod-2
