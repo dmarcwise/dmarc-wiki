@@ -8,10 +8,6 @@
 	import { ModeWatcher } from 'mode-watcher';
 	import { userPrefersMode } from 'mode-watcher';
 	import MetaTags from '$lib/meta-tags.svelte';
-	import { dev } from '$app/environment';
-	import { injectAnalytics } from '@vercel/analytics/sveltekit';
-
-	injectAnalytics({ mode: dev ? 'development' : 'production' });
 </script>
 
 <svelte:head>
