@@ -1,13 +1,16 @@
-import { ImageResponse } from '@ethercorps/sveltekit-og';
 import type { RequestHandler } from '@sveltejs/kit';
 import OpenGraphImage from '$lib/og/open-graph-image.svelte';
-import { promises as fs } from 'fs';
 import { loadProviders, type Provider } from '$lib/providers';
-import { dev } from '$app/environment';
 import checkEmoji from '$lib/emojis/check.png?base64';
 import warningEmoji from '$lib/emojis/warning.png?base64';
 import crossEmoji from '$lib/emojis/cross.png?base64';
 import { badgeColor } from '$lib/utils';
+import { render } from 'svelte/server';
+import { html } from 'satori-html';
+import satori from 'satori';
+import ZillaSlabFont from '$lib/og/zilla-slab-latin-600-normal.ttf';
+import InterFont from '$lib/og/inter-latin-500-normal.ttf';
+import sharp from 'sharp';
 
 export const GET: RequestHandler = async ({ params }) => {
 	const providers = await loadProviders();
@@ -20,9 +23,6 @@ export const GET: RequestHandler = async ({ params }) => {
 		return new Response(null, { status: 404 });
 	}
 
-	const zillaFont = await fs.readFile('src/lib/og/zilla-slab-latin-600-normal.ttf');
-	const interFont = await fs.readFile('src/lib/og/inter-latin-500-normal.ttf');
-
 	const logo = await getLogoBase64(provider.logo);
 
 	const spfText = 'SPF alignment';
@@ -33,39 +33,58 @@ export const GET: RequestHandler = async ({ params }) => {
 	const dkimImage = 'data:image/png;base64,' + (await getEmojiBase64(provider.dkimAlignment));
 	const dkimColors = badgeColor(provider.dkimAlignment);
 
-	return new ImageResponse(
-		// @ts-expect-error typings are wrong
-		OpenGraphImage,
-		{
-			debug: dev,
-			fonts: [
-				{
-					name: 'Zilla Slab',
-					data: zillaFont,
-					weight: 600,
-					style: 'normal'
-				},
-				{
-					name: 'Inter',
-					data: interFont,
-					weight: 500,
-					style: 'normal'
-				}
-			]
-		},
-		{
-			props: {
-				name: provider.name,
-				logo,
-				spfText,
-				spfImage,
-				spfColors,
-				dkimText,
-				dkimImage,
-				dkimColors
-			}
+	console.time('OG image for ' + provider.slug);
+
+	const renderedComponent = render(OpenGraphImage, {
+		props: {
+			name: provider.name,
+			logo,
+			spfText,
+			spfImage,
+			spfColors,
+			dkimText,
+			dkimImage,
+			dkimColors
 		}
-	);
+	});
+
+	const reactLike = html(renderedComponent.head + renderedComponent.body);
+
+	const svg = await satori(reactLike, {
+		width: 1200,
+		height: 630,
+		fonts: [
+			{
+				name: 'Zilla Slab',
+				data: ZillaSlabFont as unknown as ArrayBuffer,
+				weight: 600,
+				style: 'normal'
+			},
+			{
+				name: 'Inter',
+				data: InterFont as unknown as ArrayBuffer,
+				weight: 500,
+				style: 'normal'
+			}
+		]
+	});
+
+	const png = await sharp(Buffer.from(svg)).png().toBuffer();
+
+	const stream = new ReadableStream({
+		start(controller) {
+			controller.enqueue(png);
+			controller.close();
+		}
+	});
+
+	console.timeEnd('OG image for ' + provider.slug);
+
+	return new Response(stream, {
+		headers: {
+			'Content-Type': 'image/png'
+		}
+	});
 };
 
 async function getEmojiBase64(value: boolean | string) {
@@ -80,17 +99,14 @@ async function getEmojiBase64(value: boolean | string) {
 
 async function getLogoBase64(fileName: string) {
 	const files = import.meta.glob('$lib/logos/*.{jpg,png}', {
-		query: '?base64'
+		query: '?compressed-jpeg-base64'
 	});
 
 	for (const file of Object.keys(files)) {
 		if (file.endsWith(fileName)) {
 			const data = await files[file]();
-			const prefix = fileName.endsWith('.png')
-				? 'data:image/png;base64,'
-				: 'data:image/jpeg;base64,';
 			// @ts-expect-error missing module declaration
-			return prefix + data.default;
+			return data.default;
 		}
 	}
 

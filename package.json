@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
-        "prepare": "svelte-kit sync",
+		"prepare": "svelte-kit sync",
 		"build": "vite build",
 		"postbuild": "npx svelte-sitemap --domain https://dmarc.wiki",
 		"preview": "vite preview",
@@ -14,7 +14,6 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
-		"@ethercorps/sveltekit-og": "^4.0.0-next.1",
 		"@kasisoft/remark-svelte-auto-import": "^0.2.7",
 		"@sveltejs/adapter-static": "^3.0.9",
 		"@sveltejs/enhanced-img": "^0.3.8",
@@ -33,6 +32,9 @@
 		"prettier-plugin-svelte": "^3.4.0",
 		"prettier-plugin-tailwindcss": "^0.6.14",
 		"rehype-rewrite": "^4.0.2",
+		"satori": "^0.18.3",
+		"satori-html": "^0.3.2",
+		"sharp": "^0.34.4",
 		"svelte": "^5.38.3",
 		"svelte-check": "^4.3.1",
 		"svooltip": "^0.9.0",
