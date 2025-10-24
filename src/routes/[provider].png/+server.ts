@@ -11,6 +11,7 @@ import satori from 'satori';
 import ZillaSlabFont from '$lib/og/zilla-slab-latin-600-normal.ttf';
 import InterFont from '$lib/og/inter-latin-500-normal.ttf';
 import sharp from 'sharp';
+import { read } from '$app/server';
 
 export const GET: RequestHandler = async ({ params }) => {
 	const providers = await loadProviders();
@@ -56,13 +57,13 @@ export const GET: RequestHandler = async ({ params }) => {
 		fonts: [
 			{
 				name: 'Zilla Slab',
-				data: ZillaSlabFont as unknown as ArrayBuffer,
+				data: await read(ZillaSlabFont).arrayBuffer(),
 				weight: 600,
 				style: 'normal'
 			},
 			{
 				name: 'Inter',
-				data: InterFont as unknown as ArrayBuffer,
+				data: await read(InterFont).arrayBuffer(),
 				weight: 500,
 				style: 'normal'
 			}

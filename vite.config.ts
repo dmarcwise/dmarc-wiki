@@ -41,15 +41,6 @@ export default defineConfig({
 
 				return `export default 'data:image/jpeg;base64,${base64}';`;
 			}
-		},
-		{
-			name: 'load-ttf-as-array-buffer',
-			async transform(_src, id) {
-				if (id.endsWith('.ttf')) {
-					const array = new Uint8Array(await fs.promises.readFile(id));
-					return `export default new Uint8Array([${array}]).buffer`;
-				}
-			}
 		}
 	]
 });
