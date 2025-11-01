@@ -7,19 +7,17 @@
 	import logo from '$lib/logo.png';
 	import { ModeWatcher } from 'mode-watcher';
 	import { userPrefersMode } from 'mode-watcher';
-	import MetaTags from '$lib/meta-tags.svelte';
-	import type { Snippet } from 'svelte';
+	import { MetaTags, JsonLd, deepMerge } from 'svelte-meta-tags';
+	import { page } from '$app/state';
 
-	interface Props {
-		children: Snippet;
-	}
+	let { data, children } = $props();
 
-	let { children }: Props = $props();
+	let metaTags = $derived(deepMerge(data.baseMetaTags, page.data.pageMetaTags));
+	let jsonLd = $derived(page.data.jsonLd);
 </script>
 
-<svelte:head>
-	<MetaTags />
-</svelte:head>
+<MetaTags {...metaTags} />
+<JsonLd schema={jsonLd} />
 
 <ModeWatcher />
 

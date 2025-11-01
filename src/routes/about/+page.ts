@@ -1,7 +1,12 @@
+import type { MetaTagsProps } from 'svelte-meta-tags';
+
 export function load() {
 	return {
-		seo: {
-			title: 'About DMARC.wiki'
-		}
+		pageMetaTags: {
+			title: 'About DMARC.wiki',
+			openGraph: {
+				title: 'About DMARC.wiki'
+			}
+		} satisfies MetaTagsProps
 	};
 }
