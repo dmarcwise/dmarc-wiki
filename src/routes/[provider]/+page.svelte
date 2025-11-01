@@ -1,11 +1,12 @@
-<script>
+<script lang="ts">
 	import { getLogo } from '$lib/logos';
 	import BadgeSpf from '$lib/badge-spf.svelte';
 	import BadgeDkim from '$lib/badge-dkim.svelte';
 
-	export let data;
+	let { data } = $props();
 
 	const { provider } = data;
+	const ContentComponent = provider.component;
 
 	const formattedDate = provider.updated.toLocaleDateString(undefined, {
 		year: 'numeric',
@@ -40,7 +41,7 @@
 		<main class="prose prose-slate lg:prose-lg dark:prose-invert prose-pre:whitespace-pre-wrap
 							prose-code:before:hidden prose-code:after:hidden prose-p:sm:mt-0
 						  max-w-none">
-			<svelte:component this={provider.component} />
+			<ContentComponent />
 		</main>
 
 		<p class="mt-16 text-center text-sm text-slate-500">

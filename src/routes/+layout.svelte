@@ -8,6 +8,13 @@
 	import { ModeWatcher } from 'mode-watcher';
 	import { userPrefersMode } from 'mode-watcher';
 	import MetaTags from '$lib/meta-tags.svelte';
+	import type { Snippet } from 'svelte';
+
+	interface Props {
+		children: Snippet;
+	}
+
+	let { children }: Props = $props();
 </script>
 
 <svelte:head>
@@ -28,7 +35,7 @@
 
 <hr>
 
-<slot />
+{@render children()}
 
 <hr class="mt-16">
 
@@ -40,7 +47,7 @@
 	</p>
 
 	<select class="p-2 rounded-md sm:ml-auto"
-					bind:value={$userPrefersMode}>
+					bind:value={userPrefersMode.current}>
 		<option value="system">Auto</option>
 		<option value="light">Light</option>
 		<option value="dark">Dark</option>

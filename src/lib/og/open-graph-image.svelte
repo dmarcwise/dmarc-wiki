@@ -1,12 +1,25 @@
 <script lang="ts">
-	export let name: string;
-	export let logo: string;
-	export let spfText: string;
-	export let spfImage: string;
-	export let spfColors: string;
-	export let dkimText: string;
-	export let dkimImage: string;
-	export let dkimColors: string;
+	interface Props {
+		name: string;
+		logo: string;
+		spfText: string;
+		spfImage: string;
+		spfColors: string;
+		dkimText: string;
+		dkimImage: string;
+		dkimColors: string;
+	}
+
+	let {
+		name,
+		logo,
+		spfText,
+		spfImage,
+		spfColors,
+		dkimText,
+		dkimImage,
+		dkimColors
+	}: Props = $props();
 </script>
 
 <div class="bg-gray-50 flex flex-col w-full h-full py-14 px-14">

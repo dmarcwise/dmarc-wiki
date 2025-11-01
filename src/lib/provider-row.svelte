@@ -3,8 +3,13 @@
 	import { getLogo } from '$lib/logos';
 	import BadgeSpf from '$lib/badge-spf.svelte';
 	import BadgeDkim from '$lib/badge-dkim.svelte';
+	import type { Provider } from '$lib/providers';
 
-	export let provider;
+	interface Props {
+		provider: Provider;
+	}
+
+	let { provider }: Props = $props();
 </script>
 
 <a href="/{provider.slug}"

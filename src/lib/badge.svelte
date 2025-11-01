@@ -4,8 +4,12 @@
 	import CheckEmoji from '$lib/emojis/check-emoji.svelte';
 	import WarningEmoji from '$lib/emojis/warning-emoji.svelte';
 
-	export let value: boolean | string;
-	export let text: string;
+	interface Props {
+		value: boolean | string;
+		text: string;
+	}
+
+	let { value, text }: Props = $props();
 </script>
 
 <div

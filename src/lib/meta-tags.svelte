@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 
 	const fallback = {
 		title: 'DMARC.wiki',
@@ -8,13 +8,13 @@
 		ogImage: 'https://dmarc.wiki/og-image.jpg'
 	};
 
-	$: seo = $page.data.seo ?? {};
+	let seo = $derived(page.data.seo ?? {});
 
-	$: title = seo.title || fallback.title;
-	$: description = seo.description || fallback.description;
-	$: ogTitle = seo.ogTitle || seo.title || fallback.title;
-	$: ogType = seo.ogType || fallback.ogType;
-	$: ogImage = seo.ogImage || fallback.ogImage;
+	let title = $derived(seo.title || fallback.title);
+	let description = $derived(seo.description || fallback.description);
+	let ogTitle = $derived(seo.ogTitle || seo.title || fallback.title);
+	let ogType = $derived(seo.ogType || fallback.ogType);
+	let ogImage = $derived(seo.ogImage || fallback.ogImage);
 </script>
 
 <title>{title}</title>
@@ -40,4 +40,4 @@
 	{@html `<script type="application/ld+json">${JSON.stringify(seo.jsonLd)}</script>`}
 {/if}
 
-<link rel="canonical" href="https://dmarc.wiki{$page.url.pathname}" />
+<link rel="canonical" href="https://dmarc.wiki{page.url.pathname}" />

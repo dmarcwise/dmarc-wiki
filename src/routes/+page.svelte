@@ -1,10 +1,9 @@
 <script lang="ts">
 	import ProviderRow from '$lib/provider-row.svelte';
 
-	export let data;
+	let { data } = $props();
 
-	const hostingProviders = data.hostingProviders;
-	const marketingProviders = data.marketingProviders;
+	const { hostingProviders, marketingProviders } = data;
 </script>
 
 <main class="container">
@@ -23,7 +22,7 @@
 	</h2>
 
 	<div class="grid mt-8 gap-y-4">
-		{#each hostingProviders as provider}
+		{#each hostingProviders as provider (provider.slug)}
 			<ProviderRow {provider} />
 		{/each}
 	</div>
@@ -33,7 +32,7 @@
 	</h2>
 
 	<div class="grid mt-8 gap-y-4">
-		{#each marketingProviders as provider}
+		{#each marketingProviders as provider (provider.slug)}
 			<ProviderRow {provider} />
 		{/each}
 	</div>

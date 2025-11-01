@@ -1,8 +1,14 @@
 <script lang="ts">
 	import { tooltip } from 'svooltip';
-	import 'svooltip/styles.css'; // Include default styling
+	import 'svooltip/styles.css';
+	import type { Snippet } from 'svelte'; // Include default styling
 
-	export let title: string;
+	interface Props {
+		title: string;
+		children: Snippet;
+	}
+
+	let { title, children }: Props = $props();
 </script>
 
 <div class="!mt-20 sm:grid grid-cols-3 gap-4">
@@ -11,6 +17,6 @@
 	</h2>
 
 	<div class="col-span-2">
-		<slot />
+		{@render children()}
 	</div>
 </div>
