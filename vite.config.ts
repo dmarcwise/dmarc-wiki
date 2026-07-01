@@ -1,5 +1,6 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { enhancedImages } from '@sveltejs/enhanced-img';
+import tailwindcss from '@tailwindcss/vite';
 import { svelteSitemap } from 'svelte-sitemap/vite';
 import { defineConfig } from 'vite';
 import * as fs from 'fs';
@@ -7,6 +8,7 @@ import sharp from 'sharp';
 
 export default defineConfig({
 	plugins: [
+		tailwindcss(),
 		enhancedImages(),
 		sveltekit(),
 		svelteSitemap({ domain: 'https://dmarc.wiki' }),

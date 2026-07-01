@@ -1,34 +1,78 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import 'tailwindcss';
 
-@layer base {
-  h1 {
-    @apply tracking-wide font-title font-medium text-6xl;
-  }
+@plugin '@tailwindcss/typography';
 
-  h2 {
-    @apply font-title font-semibold;
-  }
+@custom-variant dark (&:where(.dark, .dark *));
 
-  hr {
-    @apply border-t-slate-200 dark:border-slate-800;
-  }
+@utility container {
+	margin-inline: auto;
+	padding-inline: 24px;
+
+	@media (width >= --theme(--breakpoint-sm)) {
+		max-width: none;
+	}
+
+	@media (width >= --theme(--breakpoint-md)) {
+		padding-inline: 32px;
+	}
+
+	@media (width >= 900px) {
+		max-width: 900px;
+	}
 }
 
-@layer components {
-  .svooltip {
-    --svooltip-bg: #FFFFFF;
-    --svooltip-text: #000000;
-    --svooltip-padding: 10px 14px;
-    --svooltip-roundness: 8px;
-    --svooltip-weight: 500;
-    --svooltip-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    max-width: 250px;
+@theme {
+	--font-title: Zilla Slab, ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+	--font-sans:
+		Inter Variable, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+		'Segoe UI Symbol', 'Noto Color Emoji';
 
-    .dark & {
-      --svooltip-bg: #1e293b; /* slate-800 */
-      --svooltip-text: #cad5e1; /* from typography */
-    }
-  }
+	--color-slate-850: #172033;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentcolor);
+	}
+}
+
+@utility svooltip {
+	--svooltip-bg: #ffffff;
+	--svooltip-text: #000000;
+	--svooltip-padding: 10px 14px;
+	--svooltip-roundness: 8px;
+	--svooltip-weight: 500;
+	--svooltip-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	max-width: 250px;
+
+	.dark & {
+		--svooltip-bg: #1e293b; /* slate-800 */
+		--svooltip-text: #cad5e1; /* from typography */
+	}
+}
+
+@layer base {
+	h1 {
+		@apply font-title text-6xl font-medium tracking-wide;
+	}
+
+	h2 {
+		@apply font-title font-semibold;
+	}
+
+	hr {
+		@apply border-t-slate-200 dark:border-slate-800;
+	}
 }

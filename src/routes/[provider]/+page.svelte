@@ -41,7 +41,7 @@
 		</aside>
 
 		<main class="prose prose-slate lg:prose-lg dark:prose-invert prose-pre:whitespace-pre-wrap
-							prose-code:before:hidden prose-code:after:hidden prose-p:sm:mt-0
+							prose-code:before:hidden prose-code:after:hidden sm:prose-p:mt-0
 						  max-w-none">
 			<ContentComponent />
 		</main>
