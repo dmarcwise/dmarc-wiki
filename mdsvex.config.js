@@ -1,5 +1,6 @@
 import rehypeRewrite from 'rehype-rewrite';
 import { remarkSvelteAutoImport } from '@kasisoft/remark-svelte-auto-import';
+import { fileURLToPath } from 'node:url';
 
 const badge = function (value) {
 	return `
@@ -12,7 +13,8 @@ const badge = function (value) {
 /** @type {import('mdsvex').MdsvexOptions} */
 const mdsvexOptions = {
 	extensions: ['.svelte.md'],
-	layout: 'src/lib/mdsvex/layout.svelte',
+	// Work around https://github.com/pngwn/MDsveX/pull/735 until relative layout paths are fixed.
+	layout: fileURLToPath(new URL('./src/lib/mdsvex/layout.svelte', import.meta.url)),
 	// Disable syntax highlighting
 	highlight: {
 		highlighter: (text) => {
