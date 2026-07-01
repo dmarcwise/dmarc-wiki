@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ChevronRight } from 'lucide-svelte';
+	import { ChevronRight } from '@lucide/svelte';
 	import { getLogo } from '$lib/logos';
 	import BadgeSpf from '$lib/badge-spf.svelte';
 	import BadgeDkim from '$lib/badge-dkim.svelte';

@@ -1,5 +1,6 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { enhancedImages } from '@sveltejs/enhanced-img';
+import { svelteSitemap } from 'svelte-sitemap/vite';
 import { defineConfig } from 'vite';
 import * as fs from 'fs';
 import sharp from 'sharp';
@@ -8,6 +9,7 @@ export default defineConfig({
 	plugins: [
 		enhancedImages(),
 		sveltekit(),
+		svelteSitemap({ domain: 'https://dmarc.wiki' }),
 		{
 			name: 'base64-loader',
 			async transform(_, id: string) {

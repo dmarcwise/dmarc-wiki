@@ -8,7 +8,11 @@
 
 	let { provider }: Props = $props();
 
-	const text = provider.dkim ? 'DKIM alignment' : 'No DKIM support';
+	const text = $derived(
+		provider.dkim
+			? 'DKIM alignment'
+			: 'No DKIM support'
+	);
 </script>
 
 <Badge value={provider.dkim && provider.dkimAlignment} text={text} />

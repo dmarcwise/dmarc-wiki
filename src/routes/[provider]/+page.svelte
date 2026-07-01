@@ -5,14 +5,16 @@
 
 	let { data } = $props();
 
-	const { provider } = data;
-	const ContentComponent = provider.component;
+	const provider = $derived(data.provider);
+	const ContentComponent = $derived(provider.component);
 
-	const formattedDate = provider.updated.toLocaleDateString(undefined, {
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric'
-	});
+	const formattedDate = $derived(
+		provider.updated.toLocaleDateString(undefined, {
+			year: 'numeric',
+			month: 'long',
+			day: 'numeric'
+		})
+	);
 </script>
 
 <main class="container my-16">
@@ -22,8 +24,8 @@
 			<div
 				class="size-20 rounded-xl border border-slate-200 dark:border-slate-700 p-2 shrink-0">
 				<enhanced:img src={getLogo(provider.logo)}
-											alt="{provider.name} logo"
-											class="w-full rounded-lg" />
+				              alt="{provider.name} logo"
+				              class="w-full rounded-lg" />
 			</div>
 
 			<h1>

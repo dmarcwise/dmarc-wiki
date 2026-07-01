@@ -3,7 +3,7 @@
 
 	let { data } = $props();
 
-	const { hostingProviders, marketingProviders } = data;
+	const { hostingProviders, marketingProviders } = $derived(data);
 </script>
 
 <main class="container">
