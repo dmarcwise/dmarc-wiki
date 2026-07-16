@@ -16,18 +16,24 @@ Or start the server and open the app in a new browser tab:
 npm run dev -- --open
 ```
 
-## Formatting and linting
+### Formatting and linting
 
-Code formatting is handled by [Prettier](https://prettier.io/) and enforced in CI. To format the whole repository:
+Code formatting is handled by [Prettier](https://prettier.io/). To format the whole repository:
 
 ```bash
 npm run format
 ```
 
-To check formatting and run [ESLint](https://eslint.org/), as CI does:
+To check formatting and run [ESLint](https://eslint.org/):
 
 ```bash
 npm run lint
+```
+
+TypeScript, accessibility, and Svelte compiler errors are caught by [`svelte-check`](https://www.npmjs.com/package/svelte-check):
+
+```bash
+npm run check
 ```
 
 Editor configuration is committed so both editors run Prettier and ESLint on save:
