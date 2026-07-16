@@ -9,6 +9,7 @@
 	import { userPrefersMode } from 'mode-watcher';
 	import { MetaTags, JsonLd, deepMerge } from 'svelte-meta-tags';
 	import { page } from '$app/state';
+	import { resolve } from '$app/paths';
 
 	let { data, children } = $props();
 
@@ -22,7 +23,7 @@
 <ModeWatcher />
 
 <header class="container py-5 flex justify-between items-center">
-	<a href="/">
+	<a href={resolve('/')}>
 		<img
 			src={logo}
 			alt="DMARC.wiki"
@@ -30,7 +31,7 @@
 		/>
 	</a>
 
-	<a href="/about" class="font-medium uppercase hover:underline"> About </a>
+	<a href={resolve('/about')} class="font-medium uppercase hover:underline"> About </a>
 </header>
 
 <hr />
