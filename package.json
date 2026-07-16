@@ -18,6 +18,7 @@
 		"check-updates-semver": "npx npm-check-updates -i --format group,repo --cooldown 1d --target semver"
 	},
 	"devDependencies": {
+		"@eslint/js": "^10.0.1",
 		"@kasisoft/remark-svelte-auto-import": "^0.2.10",
 		"@sveltejs/adapter-static": "^3.0.10",
 		"@sveltejs/enhanced-img": "^0.11.0",
