@@ -1,3 +1,8 @@
+<script module lang="ts">
+	export { default as table } from './table.svelte';
+	export { default as h3 } from './h3.svelte';
+</script>
+
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 
@@ -6,13 +11,6 @@
 	}
 
 	let { children }: Props = $props();
-</script>
-
-<script module lang="ts">
-	import table from './table.svelte';
-	import h3 from './h3.svelte';
-
-	export { table, h3 };
 </script>
 
 {@render children?.()}

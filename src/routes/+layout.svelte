@@ -9,6 +9,7 @@
 	import { userPrefersMode } from 'mode-watcher';
 	import { MetaTags, JsonLd, deepMerge } from 'svelte-meta-tags';
 	import { page } from '$app/state';
+	import { resolve } from '$app/paths';
 
 	let { data, children } = $props();
 
@@ -22,20 +23,22 @@
 <ModeWatcher />
 
 <header class="container py-5 flex justify-between items-center">
-	<a href="/">
-		<img src={logo} alt="DMARC.wiki" class="h-10 dark:rounded-md dark:border dark:border-slate-800" />
+	<a href={resolve('/')}>
+		<img
+			src={logo}
+			alt="DMARC.wiki"
+			class="h-10 dark:rounded-md dark:border dark:border-slate-800"
+		/>
 	</a>
 
-	<a href="/about" class="font-medium uppercase hover:underline">
-		About
-	</a>
+	<a href={resolve('/about')} class="font-medium uppercase hover:underline"> About </a>
 </header>
 
-<hr>
+<hr />
 
 {@render children()}
 
-<hr class="mt-16">
+<hr class="mt-16" />
 
 <footer class="container py-12 flex flex-col sm:flex-row gap-4">
 	<p>
@@ -44,8 +47,7 @@
 		<a href="https://github.com/dmarcwise/dmarc-wiki" class="underline">GitHub</a>
 	</p>
 
-	<select class="p-2 rounded-md sm:ml-auto"
-					bind:value={userPrefersMode.current}>
+	<select class="p-2 rounded-md sm:ml-auto" bind:value={userPrefersMode.current}>
 		<option value="system">Auto</option>
 		<option value="light">Light</option>
 		<option value="dark">Dark</option>

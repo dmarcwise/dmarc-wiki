@@ -4,21 +4,23 @@ run-name: Deploy ${{ github.sha }}
 on:
   push:
     branches:
-      - "main"
+      - 'main'
   workflow_dispatch:
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version-file: 'package.json'
           cache: 'npm'
       - name: Install npm dependencies
         run: npm install
+      - name: Lint
+        run: npm run lint
       - name: Run Svelte checks
         run: npm run check
       - name: Build

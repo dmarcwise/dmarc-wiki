@@ -13,13 +13,11 @@
 	</p>
 
 	<p class="mt-4 text-lg">
-		For each provider you'll find their support for SPF alignment, DKIM and DKIM alignment,
-		with instructions and tips on how to configure them.
+		For each provider you'll find their support for SPF alignment, DKIM and DKIM alignment, with
+		instructions and tips on how to configure them.
 	</p>
 
-	<h2 class="mt-12 text-4xl">
-		Email hosting
-	</h2>
+	<h2 class="mt-12 text-4xl">Email hosting</h2>
 
 	<div class="grid mt-8 gap-y-4">
 		{#each hostingProviders as provider (provider.slug)}
@@ -27,9 +25,7 @@
 		{/each}
 	</div>
 
-	<h2 class="mt-12 text-4xl">
-		Marketing, newsletters & transactional
-	</h2>
+	<h2 class="mt-12 text-4xl">Marketing, newsletters & transactional</h2>
 
 	<div class="grid mt-8 gap-y-4">
 		{#each marketingProviders as provider (provider.slug)}

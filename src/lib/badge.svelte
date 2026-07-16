@@ -14,7 +14,8 @@
 
 <div
 	class="rounded-lg border px-3 py-1 font-medium flex items-center justify-between gap-x-2
-					{badgeColor(value)}">
+					{badgeColor(value)}"
+>
 	{text}
 	{#if value === true}
 		<CheckEmoji />

@@ -22,7 +22,7 @@ export default defineConfig({
 				const base64 = data.toString('base64');
 
 				return `export default '${base64}';`;
-			}
+			},
 		},
 		// Load image -> compress to jpeg -> convert to base64
 		// Used in open graph image generation, since the SVG to PNG conversion is otherwise incredibly slow
@@ -36,7 +36,7 @@ export default defineConfig({
 				const compressed = await sharp(data)
 					.flatten({
 						// White background for transparent images
-						background: { r: 255, g: 255, b: 255 }
+						background: { r: 255, g: 255, b: 255 },
 					})
 					.jpeg()
 					.toBuffer();
@@ -44,7 +44,7 @@ export default defineConfig({
 				const base64 = compressed.toString('base64');
 
 				return `export default 'data:image/jpeg;base64,${base64}';`;
-			}
+			},
 		},
 		{
 			name: 'load-ttf-as-array-buffer',
@@ -53,7 +53,7 @@ export default defineConfig({
 					const array = new Uint8Array(await fs.promises.readFile(id));
 					return `export default new Uint8Array([${array}]).buffer`;
 				}
-			}
-		}
-	]
+			},
+		},
+	],
 });

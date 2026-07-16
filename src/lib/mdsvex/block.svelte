@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { tooltip } from 'svooltip';
-	import 'svooltip/styles.css';
-	import type { Snippet } from 'svelte'; // Include default styling
+	import 'svooltip/styles.css'; // Include default styling
+	import type { Snippet } from 'svelte';
 
 	interface Props {
 		title: string;

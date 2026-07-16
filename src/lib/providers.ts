@@ -32,7 +32,7 @@ export async function loadProviders() {
 			dkim: toBooleanish(module.metadata.dkim),
 			dkimAlignment: toBooleanish(module.metadata.dkimAlignment),
 			component: module.default,
-			updated: new Date(module.metadata.updated)
+			updated: new Date(module.metadata.updated),
 		} as Provider;
 
 		if (module.metadata.type === 'hosting') {
@@ -47,7 +47,7 @@ export async function loadProviders() {
 
 	return {
 		hostingProviders,
-		marketingProviders
+		marketingProviders,
 	};
 }
 

@@ -3,8 +3,8 @@ import type { Picture } from 'vite-imagetools';
 const logos = import.meta.glob<ImageModule>('$lib/logos/*.{png,jpg}', {
 	eager: true,
 	query: {
-		enhanced: true
-	}
+		enhanced: true,
+	},
 });
 
 export function getLogo(fileName: string) {
