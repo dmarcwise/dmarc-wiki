@@ -13,4 +13,9 @@ Thumbs.db
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
-.idea
+# Must be `.idea/*` rather than a bare `.idea`: ignoring the directory itself
+# makes Git skip everything inside it, so the negations below can't re-add the
+# shared editor config.
+.idea/*
+!.idea/prettier.xml
+!.idea/jsLinters/
