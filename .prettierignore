@@ -2,3 +2,9 @@
 package-lock.json
 pnpm-lock.yaml
 yarn.lock
+
+# Miscellaneous
+/static/
+
+# Markdown, including mdsvex content (*.svelte.md)
+*.md

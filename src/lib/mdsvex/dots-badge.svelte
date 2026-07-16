@@ -13,6 +13,7 @@
 				content: `Replace this with the email address where you want DMARC reports to be delivered to.
 				<br>This is usually provided by your DMARC monitoring tool of choice.`
 			}}>
+	<!-- eslint-disable-next-line svelte/require-each-key, @typescript-eslint/no-unused-vars -->
 	{#each Array(3) as _}
 		<span class="size-1.5 rounded-full bg-slate-500 dark:bg-slate-600 inline-block"></span>
 	{/each}
