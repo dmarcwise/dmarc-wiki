@@ -6,7 +6,7 @@ export async function load({ url }) {
 	return {
 		hostingProviders: providers.hostingProviders,
 		marketingProviders: providers.marketingProviders,
-		...seoProperties(url)
+		...seoProperties(url),
 	};
 }
 
@@ -28,17 +28,17 @@ function seoProperties(url: URL) {
 				siteName: 'DMARC.wiki',
 				images: [
 					{
-						url: 'https://dmarc.wiki/og-image.jpg'
-					}
-				]
+						url: 'https://dmarc.wiki/og-image.jpg',
+					},
+				],
 			},
 			twitter: {
 				creator: '@DMARCwise',
 				site: '@DMARCwise',
 				cardType: 'summary_large_image',
-				image: 'https://dmarc.wiki/og-image.jpg'
-			}
-		}
+				image: 'https://dmarc.wiki/og-image.jpg',
+			},
+		},
 	};
 }
 

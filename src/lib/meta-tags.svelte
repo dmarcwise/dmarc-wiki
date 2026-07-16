@@ -3,9 +3,10 @@
 
 	const fallback = {
 		title: 'DMARC.wiki',
-		description: 'A directory of email service providers and their DMARC compliance level when used with custom domains.',
+		description:
+			'A directory of email service providers and their DMARC compliance level when used with custom domains.',
 		ogType: 'website',
-		ogImage: 'https://dmarc.wiki/og-image.jpg'
+		ogImage: 'https://dmarc.wiki/og-image.jpg',
 	};
 
 	let seo = $derived(page.data.seo ?? {});
@@ -24,7 +25,7 @@
 		seo.jsonLd
 			? // eslint-disable-next-line no-useless-escape -- the \/ keeps the parser from ending the block early
 				`<script type="application/ld+json">${JSON.stringify(seo.jsonLd)}<\/script>`
-			: null
+			: null,
 	);
 </script>
 

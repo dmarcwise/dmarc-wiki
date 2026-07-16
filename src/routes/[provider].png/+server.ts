@@ -44,8 +44,8 @@ export const GET: RequestHandler = async ({ params }) => {
 			spfColors,
 			dkimText,
 			dkimImage,
-			dkimColors
-		}
+			dkimColors,
+		},
 	});
 
 	const reactLike = html(renderedComponent.head + renderedComponent.body);
@@ -58,15 +58,15 @@ export const GET: RequestHandler = async ({ params }) => {
 				name: 'Zilla Slab',
 				data: ZillaSlabFont as unknown as ArrayBuffer,
 				weight: 600,
-				style: 'normal'
+				style: 'normal',
 			},
 			{
 				name: 'Inter',
 				data: InterFont as unknown as ArrayBuffer,
 				weight: 500,
-				style: 'normal'
-			}
-		]
+				style: 'normal',
+			},
+		],
 	});
 
 	const png = await sharp(Buffer.from(svg)).png().toBuffer();
@@ -75,15 +75,15 @@ export const GET: RequestHandler = async ({ params }) => {
 		start(controller) {
 			controller.enqueue(png);
 			controller.close();
-		}
+		},
 	});
 
 	console.timeEnd('OG image for ' + provider.slug);
 
 	return new Response(stream, {
 		headers: {
-			'Content-Type': 'image/png'
-		}
+			'Content-Type': 'image/png',
+		},
 	});
 };
 
@@ -99,7 +99,7 @@ async function getEmojiBase64(value: boolean | string) {
 
 async function getLogoBase64(fileName: string) {
 	const files = import.meta.glob('$lib/logos/*.{jpg,png}', {
-		query: '?compressed-jpeg-base64'
+		query: '?compressed-jpeg-base64',
 	});
 
 	for (const file of Object.keys(files)) {
@@ -118,12 +118,12 @@ export const entries = async () => {
 
 	const mapProviders = (providers: Provider[]) => {
 		return providers.map((provider) => ({
-			provider: provider.slug
+			provider: provider.slug,
 		}));
 	};
 
 	return mapProviders(providers.hostingProviders).concat(
-		mapProviders(providers.marketingProviders)
+		mapProviders(providers.marketingProviders),
 	);
 };
 

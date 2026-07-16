@@ -19,7 +19,7 @@ const mdsvexOptions = {
 	highlight: {
 		highlighter: (text) => {
 			return `<pre>${text}</pre>`;
-		}
+		},
 	},
 	remarkPlugins: [
 		// In code blocks, replace [...] with <DotsBadge />
@@ -41,10 +41,10 @@ const mdsvexOptions = {
 					Block: '$lib/mdsvex/block.svelte',
 					// TODO: this doesn't work because this plugin looks at the file content, not the modified tree.
 					//       find a way to always import it maybe?
-					DotsBadge: '$lib/mdsvex/dots-badge.svelte'
-				}
-			}
-		]
+					DotsBadge: '$lib/mdsvex/dots-badge.svelte',
+				},
+			},
+		],
 	],
 	rehypePlugins: [
 		[
@@ -64,10 +64,10 @@ const mdsvexOptions = {
 							}
 						}
 					}
-				}
-			}
-		]
-	]
+				},
+			},
+		],
+	],
 };
 
 export default mdsvexOptions;

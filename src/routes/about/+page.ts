@@ -5,8 +5,8 @@ export function load() {
 		pageMetaTags: {
 			title: 'About DMARC.wiki',
 			openGraph: {
-				title: 'About DMARC.wiki'
-			}
-		} satisfies MetaTagsProps
+				title: 'About DMARC.wiki',
+			},
+		} satisfies MetaTagsProps,
 	};
 }

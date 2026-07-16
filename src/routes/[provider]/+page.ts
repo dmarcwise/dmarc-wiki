@@ -15,7 +15,7 @@ export async function load({ params, parent }) {
 
 	return {
 		provider,
-		...seoProperties(provider)
+		...seoProperties(provider),
 	};
 }
 
@@ -34,23 +34,23 @@ function seoProperties(provider: Provider) {
 				title,
 				description,
 				article: {
-					modifiedTime: provider.updated.toISOString()
+					modifiedTime: provider.updated.toISOString(),
 				},
 				images: [
 					{
-						url: ogImage
-					}
-				]
+						url: ogImage,
+					},
+				],
 			},
 			twitter: {
-				image: ogImage
-			}
+				image: ogImage,
+			},
 		} satisfies MetaTagsProps,
 		jsonLd: {
 			'@type': 'NewsArticle',
 			headline: `How to set up SPF, DKIM and DMARC for ${provider.name}`,
 			dateModified: provider.updated.toISOString(),
-			image: ogImage
-		} satisfies JsonLdProps['schema']
+			image: ogImage,
+		} satisfies JsonLdProps['schema'],
 	};
 }
