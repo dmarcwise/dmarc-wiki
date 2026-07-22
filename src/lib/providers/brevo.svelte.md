@@ -3,7 +3,7 @@ name: Brevo
 slug: brevo
 logo: brevo.jpg
 type: marketing
-spfAlignment: partial
+spfAlignment: true
 dkim: true
 dkimAlignment: true
 updated: 2024-10-05
@@ -14,19 +14,17 @@ updated: 2024-10-05
 </script>
 <Block title="SPF">
 
-### Without dedicated IP
+Brevo is capable of sending SPF-aligned emails, meaning that they use your domain name in the `Envelope From` (or `Return-Path`) of email messages.
 
-**If you don't have a dedicated IP**, Brevo is **not capable** of sending SPF-aligned emails, meaning that their mail servers won't use your domain name in the `Envelope From` (or `Return-Path`) of email messages.
+This makes it possible to achieve DMARC compliance via SPF.
 
-In this situation it's not possible to achieve DMARC compliance via SPF with Brevo.
+You don't need to create a `TXT` SPF record on your domain, since Brevo takes care of it for you.
 
-Since Brevo uses a domain of theirs as the `Envelope From` (often a subdomain of `sender-sib.com`) and SPF retrieves the SPF `TXT` record from that domain, **you don't need to include Brevo in the SPF record** of your domain. In most cases, doing it anyway shouldn't hurt, but you increase the risk of reaching the limit of 10 DNS lookups.
+Follow the domain setup instructions to delegate a "branded subdomain" to Brevo, so they can host the SPF record for you. SPF verifiers look for the SPF record on this domain.
 
-### With dedicated IP
+Since the branded subdomain is pointed to Brevo, the SPF record will be hosted and managed by them.
 
-**If you set up a dedicated IP** ($251 / year), Brevo will send emails using a subdomain of your custom domain as the `Envelope From`, therefore allowing SPF alignment.
-
-[Source](https://help.brevo.com/hc/en-us/articles/115000240344-Set-up-your-dedicated-IP-in-Brevo)
+[Source](https://help.brevo.com/hc/en-us/articles/35337929909778-Set-up-your-domain-in-Brevo)
 
 </Block>
 
@@ -34,33 +32,17 @@ Since Brevo uses a domain of theirs as the `Envelope From` (often a subdomain of
 
 Brevo supports DMARC compliance via DKIM, thanks to custom DKIM signatures.
 
-To set up Brevo DKIM on your domain, follow these instructions:
+To set up Brevo DKIM on your domain, follow the domain setup instructions, which will ask you to delegate a "branded subdomain" to Brevo, so they can host the DKIM record for you. DKIM verifiers look for the DKIM record on this domain.
 
-- Go to the [Domains](https://app.brevo.com/senders/domain/list) settings page.
-- Locate your domain in the domains list and click **Authenticate**.
-- You have two options:
-  - **Authenticate the domain automatically**, in which case you'll be asked for the credentials of your nameserver provider to create the record automatically.
-  - **Authenticate the domain yourself**, in which case you'll be provided with a list of DNS records to be manually added to your domain.
-- By choosing the second option you will be shown the DKIM DNS record configuration, which should look like this:
+Since the branded subdomain is pointed to Brevo, the DKIM record will be hosted and managed by them.
 
-| Type  | Host                            | Value                       |
-| ----- | ------------------------------- | --------------------------- |
-| `TXT` | `mail._domainkey.[example.com]` | As shown in Brevo settings. |
-
-- After creating the required records, click **Authenticate this email domain** to complete the process.
-
-By default Brevo creates DKIM keys with a length of 1024 bits. You can request the use of a more secure 2048-bit key by contacting Brevo support.
-
-[Source](https://help.brevo.com/hc/en-us/articles/12163873383186-Authenticate-your-domain-with-Brevo-Brevo-code-DKIM-record-DMARC-record)
+[Source](https://help.brevo.com/hc/en-us/articles/35337929909778-Set-up-your-domain-in-Brevo)
 
 </Block>
 
 <Block title="DMARC">
 
-There are two situations:
-
-- **If you're not using a dedicated IP**, Brevo supports DMARC compliance via **DKIM only**.
-- **If you are using a dedicated IP**, Brevo supports DMARC compliance on **both SPF and DKIM**.
+Brevo supports DMARC compliance via **both SPF and DKIM**.
 
 Set up DMARC to:
 
@@ -77,7 +59,7 @@ v=DMARC1; p=none; rua=mailto:[...];
 
 You may later strengthen the policy and change the alignment mode, but make sure your email setup allows so by reviewing the DMARC reports.
 
-For example, if you use a dedicated IP with an entire subdomain dedicated to Brevo only (and emails sent from an address on that domain), you'll be able to set strict alignment mode on both SPF and DKIM.
+For example, if you use a branded subdomain entirely dedicated to Brevo (and emails are sent from an address on that domain), you'll be able to set strict alignment mode on both SPF and DKIM.
 
 ```
 v=DMARC1; p=reject; rua=mailto:[...]; aspf=s; adkim=s;
