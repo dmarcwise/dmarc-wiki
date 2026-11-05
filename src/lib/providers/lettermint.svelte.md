@@ -6,7 +6,7 @@ type: marketing
 spfAlignment: true
 dkim: true
 dkimAlignment: true
-updated: 2025-08-27
+updated: 2026-11-05
 ---
 
 <script>
@@ -32,9 +32,19 @@ Since the `lm-bounces.[example.com]` subdomain is pointed to Lettermint with a `
 
 Lettermint supports custom DKIM signatures domains. This makes it possible to achieve DMARC compliance via DKIM.
 
-Follow the domain verification process and create the `TXT` record for the DKIM key when asked.
+### With managed DKIM
 
-[Source](https://docs.lettermint.co/platform/domains/introduction)
+Managed DKIM is enabled by default for new domains and allows Lettermint to rotate your DKIM keys automatically.
+
+Follow the domain verification process and create the two `CNAME` records for the DKIM keys when asked.
+
+### Without managed DKIM
+
+Older domains use a `TXT` record for the DKIM key. To enable automatic key rotation, follow the [upgrade instructions](https://lettermint.co/knowledge-base/deliverability/managed-dkim-and-key-rotation) to migrate to managed DKIM.
+
+Keep your existing `TXT` record until Lettermint confirms that the migration is complete.
+
+[Source](https://lettermint.co/changelog/managed-dkim-key-rotation)
 
 </Block>
 
