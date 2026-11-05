@@ -6,7 +6,7 @@ type: marketing
 spfAlignment: true
 dkim: true
 dkimAlignment: true
-updated: 2025-08-27
+updated: 2026-11-05
 ---
 
 <script>
@@ -17,6 +17,8 @@ updated: 2025-08-27
 Resend is capable of sending SPF-aligned emails, meaning that they use your domain name in the `Envelope From` (or `Return-Path`) of email messages.
 
 This makes it possible to achieve DMARC compliance via SPF.
+
+### Without Resend Forge
 
 When setting up a domain with Resend, you'll be asked to create a `TXT` record on the `send` subdomain, which Resend will use as the `Envelope From` domain.
 
@@ -31,6 +33,14 @@ In addition to this, you'll be asked to create an `MX` record on the same `send`
 The `send` subdomain is customizable: look for the `Custom Return Path` feature.
 
 [Source](https://resend.com/docs/dashboard/domains/introduction)
+
+### With Resend Forge
+
+When enabling Resend Forge, you'll be asked to create a `CNAME` record on a new subdomain, which Resend will use as the `Envelope From` domain.
+
+Resend will manage the SPF record and process bounces for you.
+
+[Source](https://resend.com/docs/forge)
 
 </Block>
 
