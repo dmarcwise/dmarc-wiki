@@ -30,8 +30,8 @@
 			"groupName": "npm minor and patch"
 		},
 		{
-			"description": "All GitHub Actions updates in a single PR. Renovate regenerates actions.lock",
-			"matchManagers": ["github-actions"],
+			"description": "GitHub Actions (Renovate regenerates actions.lock) and the gh-actions-lock extension used to verify it, in a single PR",
+			"matchManagers": ["github-actions", "custom.regex"],
 			"groupName": "GitHub Actions"
 		},
 		{
