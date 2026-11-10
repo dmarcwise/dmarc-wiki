@@ -1,0 +1,111 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": ["config:recommended"],
+	"description": "Manages npm packages, the Node.js version, GitHub Actions (and their actions.lock) and gh-actions-lock. Static site, so updates are checked quarterly",
+	"enabledManagers": ["npm", "nvm", "github-actions", "custom.regex"],
+	"labels": ["dependencies"],
+	"minimumReleaseAge": "7 days",
+	"prHourlyLimit": 0,
+	"rangeStrategy": "bump",
+	"schedule": ["* * 7 1,4,7,10 *"],
+	"vulnerabilityAlerts": { "enabled": false },
+	// Temporary: npm 12 refuses registry tarballs of packages with bundleDependencies (EALLOWREMOTE on
+	// @tailwindcss/oxide-wasm32-wasi), which breaks lockfile updates. Remove once https://github.com/npm/cli/issues/9800 is fixed
+	"constraints": { "npm": "^11" },
+	"customManagers": [
+		{
+			"customType": "regex",
+			"description": "gh-actions-lock extension version installed by the verify-lockfile job",
+			"managerFilePatterns": ["/^\\.github/workflows/build\\.yml$/"],
+			"matchStrings": ["gh extension install github/gh-actions-lock --pin (?<currentValue>v\\S+)"],
+			"depNameTemplate": "github/gh-actions-lock",
+			"datasourceTemplate": "github-releases"
+		}
+	],
+	"packageRules": [
+		{
+			"description": "npm minor and patch updates (0.x minors included) are checked quarterly in a single PR",
+			"matchManagers": ["npm"],
+			"matchUpdateTypes": ["minor", "patch"],
+			"groupName": "npm minor and patch"
+		},
+		{
+			"description": "All GitHub Actions updates in a single PR. Renovate regenerates actions.lock",
+			"matchManagers": ["github-actions"],
+			"groupName": "GitHub Actions"
+		},
+		{
+			"description": "Majors that often have to wait for ecosystem support open a PR only after approval in the Dependency Dashboard; other majors open a PR per package",
+			"matchUpdateTypes": ["major"],
+			"matchPackageNames": [
+				"typescript",
+				"node",
+				"@types/node",
+				"svelte",
+				"@sveltejs/**",
+				"svelte-check",
+				"prettier-plugin-svelte",
+				"eslint-plugin-svelte",
+				"vite",
+				"eslint",
+				"@eslint/js",
+				"typescript-eslint",
+				"globals",
+				"eslint-config-prettier",
+				"tailwindcss",
+				"@tailwindcss/**",
+				"prettier-plugin-tailwindcss"
+			],
+			"dependencyDashboardApproval": true
+		},
+		{
+			"matchUpdateTypes": ["major"],
+			"matchPackageNames": [
+				"svelte",
+				"@sveltejs/**",
+				"svelte-check",
+				"prettier-plugin-svelte",
+				"eslint-plugin-svelte"
+			],
+			"groupName": "Svelte major"
+		},
+		{
+			"description": "The Vite plugins follow the Vite major",
+			"matchUpdateTypes": ["major"],
+			"matchPackageNames": ["vite", "@sveltejs/vite-plugin-svelte", "@tailwindcss/vite"],
+			"groupName": "Vite major"
+		},
+		{
+			"matchUpdateTypes": ["major"],
+			"matchPackageNames": [
+				"eslint",
+				"@eslint/js",
+				"typescript-eslint",
+				"globals",
+				"eslint-config-prettier"
+			],
+			"groupName": "ESLint major"
+		},
+		{
+			"matchUpdateTypes": ["major"],
+			"matchPackageNames": ["tailwindcss", "@tailwindcss/**", "prettier-plugin-tailwindcss"],
+			"groupName": "Tailwind major"
+		},
+		{
+			"description": "Upgrade the Node version in package.json engines (used by CI) and .nvmrc together with its types",
+			"matchUpdateTypes": ["major"],
+			"matchPackageNames": ["node", "@types/node"],
+			"groupName": "Node major"
+		},
+		{
+			"description": "Keep the Node version as a major-only range (24.x in engines, 24 in .nvmrc) instead of bumping it to the exact latest version",
+			"matchPackageNames": ["node"],
+			"rangeStrategy": "replace"
+		},
+		{
+			"description": "Node odd majors are not LTS and are skipped, so the types must skip them too",
+			"matchPackageNames": ["@types/node"],
+			"allowedVersions": "/^\\d*[02468]\\./"
+		}
+	]
+}

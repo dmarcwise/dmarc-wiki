@@ -17,9 +17,9 @@ jobs:
       SERVER_1: dmw-prod-1.taild99d78.ts.net
       SERVER_2: dmw-prod-2.taild99d78.ts.net
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7.0.1
       - name: Set up Node.js
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@v7.1.0
         with:
           node-version-file: 'package.json'
           cache: 'npm'
@@ -32,7 +32,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Connect to tailnet
-        uses: tailscale/github-action@v4.3.0
+        uses: tailscale/github-action@v4.4.0
         with:
           # Federated identity:
           # - Subject: repo:dmarcwise@175476939/dmarc-wiki@866996742:ref:refs/heads/main
